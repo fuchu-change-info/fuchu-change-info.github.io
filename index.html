@@ -9,6 +9,22 @@
   <meta name="description" content="広島県安芸郡府中町が目指す「町から市になること（市制移行）」について、10代の皆さんが自分で判断するための情報を中立にまとめたページ「府中コンパス」です。">
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='88'%3E%F0%9F%93%98%3C/text%3E%3C/svg%3E">
 
+  <!-- OGP: LINE/X/Facebook等で共有した時のプレビュー用 -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="府中コンパス">
+  <meta property="og:title" content="府中コンパス｜府中町の「市制移行」10代のための判断材料">
+  <meta property="og:description" content="賛成も反対も言わない。決まっていることと、まだ決まっていないことを、同じ大きさで並べたページ。">
+  <meta property="og:url" content="https://fuchu-change-info.github.io/">
+  <meta property="og:image" content="https://fuchu-change-info.github.io/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ja_JP">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="府中コンパス｜府中町の「市制移行」10代のための判断材料">
+  <meta name="twitter:description" content="賛成も反対も言わない。決まっていることと、まだ決まっていないことを、同じ大きさで並べたページ。">
+  <meta name="twitter:image" content="https://fuchu-change-info.github.io/assets/og-image.png">
+
   <!-- 保存されたテーマを描画前に適用（切り替え時のちらつき防止） -->
   <script>
     (function () {
@@ -710,6 +726,15 @@
     }
     .source-link:hover { text-decoration: underline; }
 
+    .source-link-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      margin-top: 10px;
+    }
+    .source-link-group .source-link { margin-top: 0; }
+
     /* 出典まとめブロック */
     .sources-block {
       background: var(--bg-surface);
@@ -1116,16 +1141,24 @@
 
       <div class="card card-voice">
         <p class="card-note">
-          住民説明会の記録やニュース報道（RCC・TSS等）によると、以下のような慎重・反対の意見が出されています。
+          住民説明会の記録やニュース報道（RCC・中国新聞など）によると、以下のような慎重・反対の意見が出されています。
         </p>
         <ul class="info-list">
           <li>「いまの『町のまま』でよいのではないか」</li>
           <li>「日本一人口が多い町（※府中町は日本一人口が多い町です）のままの方が個性があって良いのではないか」</li>
         </ul>
 
-        <a href="https://www.town.fuchu.hiroshima.jp/site/jichiseido/56016.html" target="_blank" rel="noopener" class="source-link">
-          🔗 出典：住民説明会の実施 ↗
-        </a>
+        <div class="source-link-group">
+          <a href="https://www.town.fuchu.hiroshima.jp/site/jichiseido/56016.html" target="_blank" rel="noopener" class="source-link">
+            🔗 出典：住民説明会の実施（府中町公式） ↗
+          </a>
+          <a href="https://news.yahoo.co.jp/articles/b4508e4ceeb926f885bd3a15cabb17c2335aa959" target="_blank" rel="noopener" class="source-link">
+            🔗 出典：全町民対象の住民説明会で反対意見相次ぐ（RCC中国放送） ↗
+          </a>
+          <a href="https://www.chugoku-np.co.jp/articles/-/846723" target="_blank" rel="noopener" class="source-link">
+            🔗 出典：市制移行に懸念や要望（中国新聞デジタル） ↗
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1196,6 +1229,14 @@
           <li>
             <strong>市制施行にあたっての要件</strong><br>
             <a href="https://www.town.fuchu.hiroshima.jp/site/jichiseido/53981.html" target="_blank" rel="noopener">https://www.town.fuchu.hiroshima.jp/site/jichiseido/53981.html</a>
+          </li>
+          <li>
+            <strong>全町民対象の住民説明会で反対意見相次ぐ（RCC中国放送・Yahoo!ニュース配信）</strong><br>
+            <a href="https://news.yahoo.co.jp/articles/b4508e4ceeb926f885bd3a15cabb17c2335aa959" target="_blank" rel="noopener">https://news.yahoo.co.jp/articles/b4508e4ceeb926f885bd3a15cabb17c2335aa959</a>
+          </li>
+          <li>
+            <strong>市制移行に懸念や要望　住民説明会スタート（中国新聞デジタル）</strong><br>
+            <a href="https://www.chugoku-np.co.jp/articles/-/846723" target="_blank" rel="noopener">https://www.chugoku-np.co.jp/articles/-/846723</a>
           </li>
         </ul>
       </div>

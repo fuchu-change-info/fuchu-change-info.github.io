@@ -47,6 +47,21 @@
         "3. かかるお金と、町が目指す理由",
         "4. まだ決まっていないこと"
       ]
+    },
+    {
+      "_comment": "報道記事は町の公式ページよりも消える・移動する頻度が高い（TSSの記事は掲載から数ヶ月で404になった実績あり）。取得失敗＝リンク切れの可能性として毎週検知する。",
+      "id": "news-rcc-yahoo",
+      "label": "全町民対象の住民説明会で反対意見相次ぐ（RCC中国放送・Yahoo!ニュース配信）",
+      "url": "https://news.yahoo.co.jp/articles/b4508e4ceeb926f885bd3a15cabb17c2335aa959",
+      "type": "html",
+      "used_in": ["5. 住民から出ている主な意見", "7. 情報の元データ"]
+    },
+    {
+      "id": "news-chugoku-np",
+      "label": "市制移行に懸念や要望　住民説明会スタート（中国新聞デジタル）",
+      "url": "https://www.chugoku-np.co.jp/articles/-/846723",
+      "type": "html",
+      "used_in": ["5. 住民から出ている主な意見", "7. 情報の元データ"]
     }
   ],
   "sitemap_watches": [

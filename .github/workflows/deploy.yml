@@ -28,6 +28,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/
+          cp -r assets _site/assets
           # 出典スナップショットや作業用ファイルは公開しない
 
       - uses: actions/configure-pages@v5
