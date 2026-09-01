@@ -25,8 +25,10 @@ import re
 import sys
 import urllib.error
 import urllib.request
+import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCES_FILE = ROOT / "sources.json"
@@ -84,6 +86,30 @@ def fetch(url: str, user_agent: str) -> tuple[bytes, dict[str, str]]:
             "content_length": str(len(body)),
         }
     return body, headers
+
+
+def fetch_sitemap_urls(
+    sitemap_url: str, path_prefix: str, exclude_pattern: str | None, user_agent: str,
+) -> list[str]:
+    """sitemap.xml から path_prefix 配下のURLだけを取り出す。
+
+    固定URLの巡回だけでは、町が『新しいお知らせページ』を出したこと自体を
+    見逃してしまう。sitemapを見れば、そのセクションにURLが増えたかどうかが分かる。
+    """
+    body, _ = fetch(sitemap_url, user_agent)
+    root = ET.fromstring(body)
+    urls = []
+    for loc in root.iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc"):
+        url = (loc.text or "").strip()
+        if not url:
+            continue
+        path = urlparse(url).path
+        if not path.startswith(path_prefix):
+            continue
+        if exclude_pattern and re.search(exclude_pattern, path):
+            continue
+        urls.append(url)
+    return sorted(set(urls))
 
 
 def decode_html(body: bytes, content_type: str) -> str:
@@ -251,8 +277,85 @@ def main() -> int:
         if args.accept:
             snapshot_path.write_text(text, encoding="utf-8", newline="")
 
+    # ---- sitemap監視（新しいページが増えていないか）----
+    new_pages: list[dict] = []
+
+    for watch in config.get("sitemap_watches", []):
+        wid = watch["id"]
+        print(f"[{wid}] {watch['sitemap_url']} (prefix={watch['path_prefix']})")
+
+        try:
+            urls = fetch_sitemap_urls(
+                watch["sitemap_url"], watch["path_prefix"],
+                watch.get("exclude_pattern"), user_agent,
+            )
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ET.ParseError) as exc:
+            print(f"    取得失敗: {exc}")
+            failed.append({"source": {"label": watch["label"], "url": watch["sitemap_url"]}, "error": str(exc)})
+            if wid in lock:
+                new_lock[wid] = lock[wid]
+            continue
+
+        snapshot_path = SNAPSHOT_DIR / f"{wid}.txt"
+        previous_urls = (
+            snapshot_path.read_text(encoding="utf-8").splitlines()
+            if snapshot_path.exists() else None
+        )
+
+        digest = hashlib.sha256("\n".join(urls).encode("utf-8")).hexdigest()
+        new_lock[wid] = {
+            "sitemap_url": watch["sitemap_url"],
+            "label": watch["label"],
+            "sha256": digest,
+            "url_count": len(urls),
+            "checked_at": today,
+        }
+
+        if previous_urls is None:
+            print(f"    初回取得（{len(urls)}件、比較対象なし）")
+            snapshot_path.write_text("\n".join(urls) + "\n", encoding="utf-8", newline="")
+            continue
+
+        added = sorted(set(urls) - set(previous_urls))
+        removed = sorted(set(previous_urls) - set(urls))
+
+        if not added and not removed:
+            print("    変化なし")
+            continue
+
+        print(f"    ★ ページ構成が変わっています（追加 {len(added)} / 削除 {len(removed)}）")
+        new_pages.append({"watch": watch, "added": added, "removed": removed})
+        if args.accept:
+            snapshot_path.write_text("\n".join(urls) + "\n", encoding="utf-8", newline="")
+
     # ---- レポート出力 ----
     report = [f"# 公式資料の更新チェック（{today}）", ""]
+
+    if new_pages:
+        report.append("## 🆕 新しいページが見つかった可能性")
+        report.append("")
+        report.append(
+            "固定で追いかけている6件とは別に、府中町サイトのsitemapでページ構成の"
+            "変化を検知しました。アンケートの実施時期など、新しいお知らせが"
+            "出た可能性があります。中身を見て、このページに反映すべきか判断してください。"
+        )
+        report.append("")
+        for item in new_pages:
+            w = item["watch"]
+            report.append(f"### {w['label']}")
+            report.append("")
+            if item["added"]:
+                report.append("**追加されたページ:**")
+                report.append("")
+                for u in item["added"]:
+                    report.append(f"- {u}")
+                report.append("")
+            if item["removed"]:
+                report.append("**なくなった（または移動した）ページ:**")
+                report.append("")
+                for u in item["removed"]:
+                    report.append(f"- {u}")
+                report.append("")
 
     if changed:
         report.append(f"**{len(changed)} 件の公式資料に変更がありました。**")
@@ -272,7 +375,7 @@ def main() -> int:
             report.append(item["diff"])
             report.append("```")
             report.append("")
-    else:
+    elif not new_pages:
         report.append("公式資料に変更はありませんでした。")
         report.append("")
 
@@ -298,8 +401,11 @@ def main() -> int:
         print("\nスナップショットとロックを更新しました。")
         return 0
 
-    if changed or failed:
-        print(f"\n変更 {len(changed)} 件 / 取得失敗 {len(failed)} 件。詳細は {REPORT_FILE.name} を参照。")
+    if changed or failed or new_pages:
+        print(
+            f"\n変更 {len(changed)} 件 / 新規ページ {len(new_pages)} 件 / "
+            f"取得失敗 {len(failed)} 件。詳細は {REPORT_FILE.name} を参照。"
+        )
         return 1
 
     print("\nすべての公式資料に変更はありませんでした。")

@@ -3,24 +3,24 @@
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/",
     "label": "府中町 自治制度トップページ",
     "sha256": "ae9a701bc3dee7ef7d719258e56706f72558fe996f43b630d427a7578f793324",
-    "bytes": 27282,
-    "last_modified": "Tue, 01 Sep 2026 15:45:39 GMT",
+    "bytes": 27147,
+    "last_modified": "Tue, 01 Sep 2026 16:45:42 GMT",
     "checked_at": "2026-09-02"
   },
   "setsumeikai": {
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/56016.html",
     "label": "住民説明会の実施（資料・議事録）",
     "sha256": "9404689fa826a58058aaf4e446d6dd3c9b6077be41771628c3a1b8d3a927a3ee",
-    "bytes": 31240,
-    "last_modified": "Tue, 01 Sep 2026 15:02:18 GMT",
+    "bytes": 31105,
+    "last_modified": "Tue, 01 Sep 2026 16:02:23 GMT",
     "checked_at": "2026-09-02"
   },
   "youken": {
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/53981.html",
     "label": "市制施行にあたっての要件",
     "sha256": "2caf1a79e77e80c2d45f44806513f2948978bf06ded6833db4848f00ec4d00df",
-    "bytes": 31042,
-    "last_modified": "Tue, 01 Sep 2026 15:02:08 GMT",
+    "bytes": 30909,
+    "last_modified": "Tue, 01 Sep 2026 16:02:13 GMT",
     "checked_at": "2026-09-02"
   },
   "pdf-mirai": {
@@ -45,6 +45,13 @@
     "sha256": "8ca8fc60a9cadfa6e57759e89803663cfdcd082d3a172281f6486b9db6f5de52",
     "bytes": 1030511,
     "last_modified": "Tue, 01 Sep 2026 09:00:22 GMT",
+    "checked_at": "2026-09-02"
+  },
+  "jichiseido-new-pages": {
+    "sitemap_url": "https://www.town.fuchu.hiroshima.jp/sitemap01.xml",
+    "label": "自治制度セクションの新規ページ",
+    "sha256": "2e7ebe1f8b14e580e2b25799829dd24cfb2dac6eae664ec9874ce4f41f622392",
+    "url_count": 14,
     "checked_at": "2026-09-02"
   }
 }

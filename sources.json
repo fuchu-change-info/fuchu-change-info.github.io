@@ -48,5 +48,15 @@
         "4. まだ決まっていないこと"
       ]
     }
+  ],
+  "sitemap_watches": [
+    {
+      "_comment": "個別の6件だけでは『町が新しいお知らせページを出した』こと自体を見逃す。府中町のsitemapを見て、自治制度セクション配下にURLが増えていないかを監視する。",
+      "id": "jichiseido-new-pages",
+      "label": "自治制度セクションの新規ページ",
+      "sitemap_url": "https://www.town.fuchu.hiroshima.jp/sitemap01.xml",
+      "path_prefix": "/site/jichiseido/",
+      "exclude_pattern": "list\\d+(-\\d+)?\\.html$"
+    }
   ]
 }
