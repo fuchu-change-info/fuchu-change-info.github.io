@@ -2,7 +2,7 @@
 
 広島県安芸郡府中町の市制移行について、公開資料をもとに中立に整理した非公式の情報ページ。
 
-- 公開URL: （公開後にここに記載）
+- 公開URL: https://fuchu-change-info.github.io/
 - このサイトは府中町の公式サイトではありません。正式な情報は必ず[府中町公式サイト](https://www.town.fuchu.hiroshima.jp/site/jichiseido/)で確認してください。
 
 ## 構成
