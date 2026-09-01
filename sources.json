@@ -1,0 +1,52 @@
+{
+  "_comment": "ページの記述の根拠になっている府中町の公式資料。ここに載っているURLを定期的に取得して、内容が変わっていないかを確認します。",
+  "user_agent": "fuchu-city-info-checker/1.0 (personal civic information page; contact via GitHub issues)",
+  "sources": [
+    {
+      "id": "jichiseido-top",
+      "label": "府中町 自治制度トップページ",
+      "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/",
+      "type": "html",
+      "used_in": ["1. いま起きていること"]
+    },
+    {
+      "id": "setsumeikai",
+      "label": "住民説明会の実施（資料・議事録）",
+      "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/56016.html",
+      "type": "html",
+      "used_in": ["5. 住民から出ている主な意見", "6. このサイトが載せていないこと"]
+    },
+    {
+      "id": "youken",
+      "label": "市制施行にあたっての要件",
+      "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/53981.html",
+      "type": "html",
+      "used_in": ["7. 情報の元データ"]
+    },
+    {
+      "id": "pdf-mirai",
+      "label": "説明資料「府中町 まちの未来に向けて」（PDF）",
+      "url": "https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32658.pdf",
+      "type": "pdf",
+      "used_in": ["7. 情報の元データ"]
+    },
+    {
+      "id": "pdf-pamphlet",
+      "label": "市制施行パンフレット（PDF）",
+      "url": "https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32411.pdf",
+      "type": "pdf",
+      "used_in": ["3. かかるお金と、町が目指す理由"]
+    },
+    {
+      "id": "pdf-qa",
+      "label": "ご質問に対する回答（PDF）",
+      "url": "https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32854.pdf",
+      "type": "pdf",
+      "used_in": [
+        "2. 市になっても変わらないこと",
+        "3. かかるお金と、町が目指す理由",
+        "4. まだ決まっていないこと"
+      ]
+    }
+  ]
+}

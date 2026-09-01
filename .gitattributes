@@ -1,0 +1,2 @@
+# Windows と Linux(Actions) で改行差が出ると、出典チェックが毎回誤検知するため LF に固定する
+* text=auto eol=lf

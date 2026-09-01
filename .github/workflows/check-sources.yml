@@ -1,0 +1,75 @@
+name: 公式資料の更新チェック
+
+on:
+  schedule:
+    # 毎週月曜 8:00 (JST) = 日曜 23:00 (UTC)
+    - cron: "0 23 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pypdf
+
+      - name: 公式資料を取得して前回と比較する
+        id: check
+        run: |
+          if python scripts/check_sources.py; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # 変更があったときだけ、確認用のプルリクエストを作る。
+      # このPRが変えるのは snapshots/ と sources.lock.json だけで、
+      # ページ本文（index.html）には手を触れない。本文の修正は人が判断する。
+      - name: 確認用のプルリクエストを作る
+        if: steps.check.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)
+          BRANCH="sources-update/${TODAY}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 同じ日に既にPRがあるなら、そちらに上書きする
+          git checkout -B "$BRANCH"
+          python scripts/check_sources.py --accept
+          git add snapshots sources.lock.json
+
+          if git diff --cached --quiet; then
+            echo "コミットする差分がありませんでした。"
+            exit 0
+          fi
+
+          git commit -m "公式資料の変更を検知 (${TODAY})"
+          git push --force-with-lease origin "$BRANCH"
+
+          if gh pr view "$BRANCH" --json number >/dev/null 2>&1; then
+            gh pr comment "$BRANCH" --body-file update-report.md
+            echo "既存のPRにコメントしました。"
+          else
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "📄 公式資料に変更を検知 (${TODAY})" \
+              --body-file update-report.md
+          fi
+
+      - name: 変更がなければ結果だけ残す
+        if: steps.check.outputs.changed == 'false'
+        run: cat update-report.md >> "$GITHUB_STEP_SUMMARY"

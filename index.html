@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" id="themeColorMeta" content="#f6f8fb">
+  <title>府中町の「市制移行」について考える｜10代のための判断材料</title>
+  <meta name="description" content="広島県安芸郡府中町が目指す「町から市になること（市制移行）」について、10代の皆さんが自分で判断するための情報を中立にまとめたページです。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='88'%3E%F0%9F%93%98%3C/text%3E%3C/svg%3E">
+
+  <!-- 保存されたテーマを描画前に適用（切り替え時のちらつき防止） -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('fuchu-theme');
+        if (t === 'dark' || t === 'light') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    /* ==================================================
+       1. デザイントークン（ライトモード）
+       ================================================== */
+    :root {
+      --bg-primary: #f6f8fb;
+      --bg-surface: #ffffff;
+      --bg-card: #ffffff;
+      --header-bg: rgba(255, 255, 255, 0.82);
+
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #5e6c7f;
+
+      --border-color: #e3e8ef;
+      --border-strong: #cbd5e1;
+
+      --primary-accent: #2563eb;
+      --primary-accent-strong: #1d4ed8;
+      --on-primary: #ffffff;
+      --focus-ring: #2563eb;
+
+      --notice-bg: #eff6ff;
+      --notice-border: #bfdbfe;
+      --notice-text: #1e40af;
+
+      --disclaimer-bg: #fffbeb;
+      --disclaimer-border: #fcd34d;
+      --disclaimer-accent: #d97706;
+      --disclaimer-text: #92400e;
+
+      /* 1. 変わらないこと（安定・グリーン） */
+      --color-unchanged-bg: #f0fdf4;
+      --color-unchanged-border: #bbf7d0;
+      --color-unchanged-accent: #16a34a;
+      --color-unchanged-tag: #dcfce7;
+      --color-unchanged-tag-text: #15803d;
+
+      /* 2. かかるお金・町の理由（データ・ブルー） */
+      --color-info-bg: #f0f9ff;
+      --color-info-border: #bae6fd;
+      --color-info-accent: #0284c7;
+      --color-info-tag: #e0f2fe;
+      --color-info-tag-text: #075985;
+
+      /* 3. まだ決まっていないこと（パープル） */
+      --color-pending-bg: #faf5ff;
+      --color-pending-border: #e9d5ff;
+      --color-pending-accent: #9333ea;
+      --color-pending-tag: #f3e8ff;
+      --color-pending-tag-text: #7e22ce;
+
+      /* 4. 住民の声（ティール） */
+      --color-voice-bg: #f0fdfa;
+      --color-voice-border: #99f6e4;
+      --color-voice-accent: #0d9488;
+      --color-voice-tag: #ccfbf1;
+      --color-voice-tag-text: #0f766e;
+
+      /* 数字ハイライトの下地 */
+      --highlight: #cde9fb;
+
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, .05), 0 1px 3px rgba(15, 23, 42, .05);
+      --shadow-md: 0 4px 10px -2px rgba(15, 23, 42, .08), 0 2px 4px -2px rgba(15, 23, 42, .05);
+      --shadow-lg: 0 14px 30px -10px rgba(15, 23, 42, .18);
+
+      --header-h: 56px;
+      --gutter: clamp(16px, 4vw, 24px);
+    }
+
+    /* ==================================================
+       2. デザイントークン（ダークモード）
+       OS設定に追従。手動で「ライト」を選んだ場合は除外する
+       ================================================== */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+
+        --bg-primary: #0b1220;
+        --bg-surface: #151f31;
+        --bg-card: #151f31;
+        --header-bg: rgba(11, 18, 32, 0.82);
+
+        --text-main: #f1f5f9;
+        --text-muted: #c2cddb;
+        --text-subtle: #94a3b8;
+
+        --border-color: #2b3a50;
+        --border-strong: #3f5570;
+
+        --primary-accent: #7cb0ff;
+        --primary-accent-strong: #a3c7ff;
+        --on-primary: #0b1220;
+        --focus-ring: #7cb0ff;
+
+        --notice-bg: rgba(37, 99, 235, .16);
+        --notice-border: #2a4d8f;
+        --notice-text: #b6d3ff;
+
+        --disclaimer-bg: rgba(217, 119, 6, .14);
+        --disclaimer-border: #a4650f;
+        --disclaimer-accent: #fbbf24;
+        --disclaimer-text: #fde3a7;
+
+        --color-unchanged-bg: rgba(22, 163, 74, .13);
+        --color-unchanged-border: #2c6a45;
+        --color-unchanged-accent: #4ade80;
+        --color-unchanged-tag: rgba(22, 163, 74, .22);
+        --color-unchanged-tag-text: #9df0b6;
+
+        --color-info-bg: rgba(2, 132, 199, .14);
+        --color-info-border: #2a5e83;
+        --color-info-accent: #56c1f5;
+        --color-info-tag: rgba(2, 132, 199, .24);
+        --color-info-tag-text: #a6ddfb;
+
+        --color-pending-bg: rgba(147, 51, 234, .14);
+        --color-pending-border: #5b3a86;
+        --color-pending-accent: #c99bfb;
+        --color-pending-tag: rgba(147, 51, 234, .24);
+        --color-pending-tag-text: #e4ccff;
+
+        --color-voice-bg: rgba(13, 148, 136, .14);
+        --color-voice-border: #2a6b66;
+        --color-voice-accent: #45d6c2;
+        --color-voice-tag: rgba(13, 148, 136, .24);
+        --color-voice-tag-text: #9ceee2;
+
+        --highlight: rgba(86, 193, 245, .28);
+
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, .40);
+        --shadow-lg: 0 16px 32px -12px rgba(0, 0, 0, .60);
+      }
+    }
+
+    /* 手動で「ダーク」を選んだ場合（OS設定より優先） */
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+
+      --bg-primary: #0b1220;
+      --bg-surface: #151f31;
+      --bg-card: #151f31;
+      --header-bg: rgba(11, 18, 32, 0.82);
+
+      --text-main: #f1f5f9;
+      --text-muted: #c2cddb;
+      --text-subtle: #94a3b8;
+
+      --border-color: #2b3a50;
+      --border-strong: #3f5570;
+
+      --primary-accent: #7cb0ff;
+      --primary-accent-strong: #a3c7ff;
+      --on-primary: #0b1220;
+      --focus-ring: #7cb0ff;
+
+      --notice-bg: rgba(37, 99, 235, .16);
+      --notice-border: #2a4d8f;
+      --notice-text: #b6d3ff;
+
+      --disclaimer-bg: rgba(217, 119, 6, .14);
+      --disclaimer-border: #a4650f;
+      --disclaimer-accent: #fbbf24;
+      --disclaimer-text: #fde3a7;
+
+      --color-unchanged-bg: rgba(22, 163, 74, .13);
+      --color-unchanged-border: #2c6a45;
+      --color-unchanged-accent: #4ade80;
+      --color-unchanged-tag: rgba(22, 163, 74, .22);
+      --color-unchanged-tag-text: #9df0b6;
+
+      --color-info-bg: rgba(2, 132, 199, .14);
+      --color-info-border: #2a5e83;
+      --color-info-accent: #56c1f5;
+      --color-info-tag: rgba(2, 132, 199, .24);
+      --color-info-tag-text: #a6ddfb;
+
+      --color-pending-bg: rgba(147, 51, 234, .14);
+      --color-pending-border: #5b3a86;
+      --color-pending-accent: #c99bfb;
+      --color-pending-tag: rgba(147, 51, 234, .24);
+      --color-pending-tag-text: #e4ccff;
+
+      --color-voice-bg: rgba(13, 148, 136, .14);
+      --color-voice-border: #2a6b66;
+      --color-voice-accent: #45d6c2;
+      --color-voice-tag: rgba(13, 148, 136, .24);
+      --color-voice-tag-text: #9ceee2;
+
+      --highlight: rgba(86, 193, 245, .28);
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, .40);
+      --shadow-lg: 0 16px 32px -12px rgba(0, 0, 0, .60);
+    }
+
+    :root[data-theme="light"] { color-scheme: light; }
+
+    /* ==================================================
+       3. リセット & 基本スタイル
+       ================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
+                   "Yu Gothic UI", "Meiryo", sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.8;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      overflow-wrap: anywhere;
+      line-break: strict;
+      padding-bottom: calc(88px + env(safe-area-inset-bottom));
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding-left: max(var(--gutter), env(safe-area-inset-left));
+      padding-right: max(var(--gutter), env(safe-area-inset-right));
+    }
+
+    a { color: var(--primary-accent); }
+
+    /* キーボード操作時のフォーカス表示 */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--focus-ring);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    /* スキップリンク（キーボード利用者向け） */
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -80px;
+      z-index: 200;
+      background: var(--primary-accent);
+      color: var(--on-primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: top .18s ease;
+    }
+    .skip-link:focus { top: 10px; }
+
+    /* ==================================================
+       4. ヘッダー（固定 + 読了プログレス）
+       ================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--header-bg);
+      border-bottom: 1px solid var(--border-color);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      backdrop-filter: saturate(180%) blur(12px);
+    }
+
+    /* 半透明ぼかしに非対応のブラウザでは不透明にする */
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      header { background-color: var(--bg-surface); }
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      min-height: var(--header-h);
+      padding: 8px max(var(--gutter), env(safe-area-inset-right)) 8px max(var(--gutter), env(safe-area-inset-left));
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--notice-text);
+      background: var(--notice-bg);
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--notice-border);
+      white-space: nowrap;
+    }
+
+    .header-badge .icon { margin-top: 0; }
+
+    .progress-track {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 3px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      background: linear-gradient(90deg, var(--primary-accent), var(--color-voice-accent));
+    }
+
+    /* テーマ切替ボタン（タップ領域を確保） */
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 40px;
+      padding: 8px 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      border-radius: var(--radius-pill);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color .18s ease, border-color .18s ease, transform .1s ease;
+    }
+
+    .theme-toggle-btn:hover { border-color: var(--border-strong); }
+    .theme-toggle-btn:active { transform: scale(.96); }
+    .theme-toggle-icon { font-size: 1rem; line-height: 1; }
+
+    /* ==================================================
+       5. ヒーロー & 宣言バナー
+       ================================================== */
+    .hero { padding: clamp(20px, 6vw, 34px) 0 8px; }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      margin-bottom: 12px;
+      font-size: 0.82rem;
+      color: var(--text-subtle);
+    }
+
+    .read-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-surface);
+      padding: 2px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-color);
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 6.4vw, 2rem);
+      font-weight: 800;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      text-wrap: balance;
+    }
+
+    /* 狭い画面では強制改行を解除して自然に折り返す */
+    h1 br { display: none; }
+    @media (min-width: 400px) { h1 br { display: inline; } }
+
+    .hero-lead {
+      font-size: clamp(0.95rem, 3.6vw, 1.02rem);
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .disclaimer-banner {
+      background-color: var(--disclaimer-bg);
+      border: 1px solid var(--disclaimer-border);
+      border-left: 5px solid var(--disclaimer-accent);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .disclaimer-title {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--disclaimer-text);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .disclaimer-banner p {
+      font-size: 0.92rem;
+      color: var(--text-main);
+      line-height: 1.75;
+      margin-bottom: 6px;
+    }
+    .disclaimer-banner p:last-child { margin-bottom: 0; }
+
+    .neutrality-banner {
+      background-color: var(--notice-bg);
+      border: 1px solid var(--notice-border);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 26px;
+    }
+
+    .neutrality-banner-title {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--notice-text);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .neutrality-banner ul {
+      margin-top: 8px;
+      list-style: none;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .neutrality-banner li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 4px;
+      line-height: 1.7;
+    }
+    .neutrality-banner li:last-child { margin-bottom: 0; }
+    .neutrality-banner li::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: .68em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary-accent);
+    }
+
+    /* ==================================================
+       6. クイックナビ
+       ================================================== */
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 52px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-left-width: 4px;
+      border-left-style: solid;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+      transition: border-color .18s ease, box-shadow .18s ease, transform .1s ease;
+    }
+
+    .nav-item:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); }
+    .nav-item:active { transform: scale(.98); }
+
+    .nav-arrow { flex: none; font-size: 0.9rem; color: var(--text-subtle); }
+
+    .nav-item.nav-unchanged { border-left-color: var(--color-unchanged-accent); }
+    .nav-item.nav-info { border-left-color: var(--color-info-accent); }
+    .nav-item.nav-pending { border-left-color: var(--color-pending-accent); }
+    .nav-item.nav-voice { border-left-color: var(--color-voice-accent); }
+
+    /* ==================================================
+       7. セクション & カード
+       ================================================== */
+    section {
+      margin-bottom: 34px;
+      /* 固定ヘッダーにタイトルが隠れないようにする */
+      scroll-margin-top: calc(var(--header-h) + 14px);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      margin-bottom: 14px;
+    }
+
+    .section-tag {
+      flex: none;
+      margin-top: 3px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      line-height: 1.6;
+    }
+
+    .section-title {
+      font-size: clamp(1.15rem, 4.6vw, 1.35rem);
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      padding: clamp(16px, 4.5vw, 22px);
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+      --bullet: var(--text-subtle);
+    }
+    .card:last-child { margin-bottom: 0; }
+
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .card-premise {
+      background: var(--bg-surface);
+      border-left-color: var(--primary-accent);
+      --bullet: var(--primary-accent);
+    }
+
+    .card-unchanged {
+      background: var(--color-unchanged-bg);
+      border-color: var(--color-unchanged-border);
+      border-left-color: var(--color-unchanged-accent);
+      --bullet: var(--color-unchanged-accent);
+    }
+    .tag-unchanged { background: var(--color-unchanged-tag); color: var(--color-unchanged-tag-text); }
+
+    .card-info {
+      background: var(--color-info-bg);
+      border-color: var(--color-info-border);
+      border-left-color: var(--color-info-accent);
+      --bullet: var(--color-info-accent);
+    }
+    .tag-info { background: var(--color-info-tag); color: var(--color-info-tag-text); }
+
+    .card-pending {
+      background: var(--color-pending-bg);
+      border-color: var(--color-pending-border);
+      border-left-color: var(--color-pending-accent);
+      --bullet: var(--color-pending-accent);
+    }
+    .tag-pending { background: var(--color-pending-tag); color: var(--color-pending-tag-text); }
+
+    .card-voice {
+      background: var(--color-voice-bg);
+      border-color: var(--color-voice-border);
+      border-left-color: var(--color-voice-accent);
+      --bullet: var(--color-voice-accent);
+    }
+    .tag-voice { background: var(--color-voice-tag); color: var(--color-voice-tag-text); }
+
+    .card-note {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.75;
+    }
+
+    .info-list { list-style: none; }
+
+    .info-list li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 14px;
+      font-size: clamp(0.93rem, 3.7vw, 0.96rem);
+      line-height: 1.85;
+    }
+    .info-list li:last-child { margin-bottom: 0; }
+
+    .info-list li::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: .72em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--bullet);
+    }
+
+    /* 数字ハイライト */
+    .stat-number {
+      font-size: 1.22em;
+      font-weight: 800;
+      color: var(--text-main);
+      background: linear-gradient(transparent 62%, var(--highlight) 62%);
+      padding: 0 3px;
+      white-space: nowrap;
+    }
+
+    /* 未確認・未定バッジ */
+    .badge-unknown {
+      display: inline-block;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 1.6;
+      padding: 1px 9px;
+      border-radius: var(--radius-pill);
+      margin: 0 2px;
+      white-space: nowrap;
+      vertical-align: 1px;
+    }
+
+    /* 言い換え解説ボックス */
+    .glossary-box {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: var(--bg-surface);
+      border-radius: var(--radius-sm);
+      border: 1px dashed var(--border-strong);
+      font-size: 0.87rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    .glossary-title {
+      font-weight: 700;
+      color: var(--text-subtle);
+      font-size: 0.78rem;
+      margin-bottom: 2px;
+    }
+
+    /* 出典リンク */
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 40px;
+      font-size: 0.82rem;
+      color: var(--primary-accent);
+      text-decoration: none;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+    .source-link:hover { text-decoration: underline; }
+
+    /* 出典まとめブロック */
+    .sources-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: clamp(16px, 4.5vw, 20px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sources-list { list-style: none; }
+
+    .sources-list li {
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .sources-list li:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+    .sources-list a {
+      display: inline-block;
+      color: var(--primary-accent);
+      text-decoration: none;
+      word-break: break-all;
+      font-weight: 600;
+      font-size: 0.83rem;
+      padding: 2px 0;
+    }
+    .sources-list a:hover { text-decoration: underline; }
+
+    /* 問い合わせカード */
+    .contact-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--primary-accent);
+      border-radius: var(--radius-lg);
+      padding: clamp(20px, 5.5vw, 28px);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-title { font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; line-height: 1.5; }
+    .contact-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.75; }
+
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .web-form-button,
+    .phone-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 20px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      text-align: center;
+      line-height: 1.5;
+      transition: transform .1s ease, box-shadow .18s ease, background-color .18s ease;
+    }
+
+    .web-form-button {
+      background: var(--primary-accent);
+      color: var(--on-primary);
+      font-weight: 700;
+      font-size: 0.98rem;
+      box-shadow: var(--shadow-md);
+    }
+    .web-form-button:hover { background: var(--primary-accent-strong); }
+    .web-form-button:active, .phone-button:active { transform: scale(.98); }
+
+    .phone-button {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1.5px solid var(--border-strong);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .phone-button:hover { background: var(--bg-primary); }
+
+    .contact-detail { margin-top: 16px; font-size: 0.82rem; color: var(--text-subtle); line-height: 1.6; }
+
+    /* フッター */
+    footer {
+      margin-top: 42px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      border-top: 1px solid var(--border-color);
+      padding-top: 24px;
+      line-height: 1.8;
+    }
+
+    .last-checked {
+      margin-top: 12px;
+      font-size: 0.76rem;
+      color: var(--text-subtle);
+    }
+
+    /* SVGアイコン */
+    .icon {
+      width: 1.15em;
+      height: 1.15em;
+      flex: none;
+      margin-top: .18em;
+      fill: currentColor;
+      vertical-align: -0.15em;
+    }
+
+    /* ==================================================
+       8. ページ先頭へ戻るボタン
+       ================================================== */
+    .to-top {
+      position: fixed;
+      right: max(16px, env(safe-area-inset-right));
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      z-index: 90;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      box-shadow: var(--shadow-lg);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity .22s ease, transform .22s ease, visibility .22s;
+    }
+
+    .to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .to-top:active { transform: scale(.94); }
+    .to-top .icon { width: 22px; height: 22px; margin-top: 0; }
+
+    /* ==================================================
+       9. 画面サイズ・環境ごとの調整
+       ================================================== */
+    /* スマホ縦持ち：ラベルが途中で折り返さないよう1列に */
+    @media (max-width: 429px) {
+      .nav-grid { grid-template-columns: 1fr; gap: 8px; }
+      .nav-item { min-height: 48px; }
+    }
+
+    /* 極小スマホ（iPhone SE 等） */
+    @media (max-width: 359px) {
+      .header-badge { font-size: 0.72rem; padding: 4px 9px; }
+      .theme-toggle-btn { padding: 8px 10px; font-size: 0.8rem; }
+    }
+
+    /* タブレット以上 */
+    @media (min-width: 720px) {
+      .hero { padding-top: 40px; }
+      .nav-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* 「視差効果を減らす」設定を尊重 */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+    }
+
+    /* コントラスト強調設定 */
+    @media (prefers-contrast: more) {
+      .card, .nav-item, .sources-block { border-width: 2px; }
+    }
+
+    /* 印刷時 */
+    @media print {
+      header, .to-top, .nav-grid, .skip-link { display: none !important; }
+      body { background: #fff; color: #000; padding: 0; font-size: 11pt; }
+      .container { max-width: none; padding: 0; }
+      .card, .sources-block, .contact-card, .disclaimer-banner, .neutrality-banner {
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .sources-list a::after { content: " (" attr(href) ")"; font-size: 9pt; word-break: break-all; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <!-- スティッキーヘッダー -->
+  <header>
+    <div class="header-inner">
+      <span class="header-badge">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        中立情報ガイド
+      </span>
+      <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-pressed="false" aria-label="ダークモードに切り替え">
+        <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">🌙</span>
+        <span id="themeToggleText">ダーク</span>
+      </button>
+    </div>
+    <div class="progress-track" aria-hidden="true">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </header>
+
+  <div class="container" id="main">
+
+    <!-- ヒーローセクション -->
+    <div class="hero">
+      <div class="meta-bar">
+        <span>広島県安芸郡府中町</span>
+        <span class="read-time">⏱️ 読了目安 3分</span>
+      </div>
+      <h1>府中町の「市制移行」<br>10代のための判断材料</h1>
+      <p class="hero-lead">
+        府中町（ふちゅうちょう）が「町から市になること」を目指しています。15歳以上の町民全員にアンケートが届くため、10代の皆さんも判断に参加することになります。
+      </p>
+
+      <!-- 非公式宣言バナー -->
+      <div class="disclaimer-banner">
+        <div class="disclaimer-title">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+          ご注意（このサイトの制作者について）
+        </div>
+        <p><strong>このサイトは府中町の公式サイトではありません。</strong></p>
+        <p>府中町に住む高校生が、町の公開資料をまとめたものです。<br>正式な情報は必ず府中町公式サイトで確認してください。</p>
+      </div>
+
+      <!-- 中立性宣言 -->
+      <div class="neutrality-banner">
+        <div class="neutrality-banner-title">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-5.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          このサイトのお約束（中立宣言）
+        </div>
+        <ul>
+          <li>投票機能やアンケートはありません</li>
+          <li>どちらかの意見に誘いこむ表現は使いません</li>
+          <li>決まっていること・まだ決まっていないことを同じ大きさで扱います</li>
+          <li>町の公開資料（PDF）およびニュース報道で確認できたデータに基づいています</li>
+        </ul>
+      </div>
+
+      <!-- クイックナビ -->
+      <nav class="nav-grid" aria-label="ページ内の目次">
+        <a href="#section-premise" class="nav-item nav-info">
+          <span>1. 基本の前提</span>
+          <span class="nav-arrow" aria-hidden="true">↓</span>
+        </a>
+        <a href="#section-unchanged" class="nav-item nav-unchanged">
+          <span>2. 変わらないこと</span>
+          <span class="nav-arrow" aria-hidden="true">↓</span>
+        </a>
+        <a href="#section-cost-reason" class="nav-item nav-info">
+          <span>3. かかるお金と理由</span>
+          <span class="nav-arrow" aria-hidden="true">↓</span>
+        </a>
+        <a href="#section-pending" class="nav-item nav-pending">
+          <span>4. 未決定のこと</span>
+          <span class="nav-arrow" aria-hidden="true">↓</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <!-- セクション1: 基本の前提 -->
+    <section id="section-premise">
+      <div class="section-header">
+        <span class="section-tag tag-info">前提</span>
+        <h2 class="section-title">1. いま起きていること</h2>
+      </div>
+
+      <div class="card card-premise">
+        <ul class="info-list">
+          <li>
+            府中町は、<strong>2028年度中（令和10年度中）</strong>に「町」から「市」になること（市制移行）を目指しています。
+          </li>
+          <li>
+            賛成か反対かをたずねる意向調査（アンケート）が、<strong>15歳以上の全町民（約44,500人）</strong>に配られます。
+          </li>
+          <li>
+            アンケートの具体的な配布時期：<strong class="stat-number">今年度中</strong> <span class="badge-unknown">具体的な月日は未確認</span>
+          </li>
+        </ul>
+
+        <div class="glossary-box">
+          <div class="glossary-title">💡 言い換え解説</div>
+          <strong>市制移行（しせいいこう）</strong>：町という区切りから「市」という区切りへ立場を変えること。
+        </div>
+
+        <a href="https://www.town.fuchu.hiroshima.jp/site/jichiseido/" target="_blank" rel="noopener" class="source-link">
+          🔗 出典：府中町 自治制度ページ ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- セクション2: 変わらないこと（町の公式回答） -->
+    <section id="section-unchanged">
+      <div class="section-header">
+        <span class="section-tag tag-unchanged">変わらない</span>
+        <h2 class="section-title">2. 市になっても変わらないこと</h2>
+      </div>
+
+      <div class="card card-unchanged">
+        <ul class="info-list">
+          <li>
+            <strong>暮らしのサービス：</strong>ごみ収集、税金、学校や公園の使いかたなどは、これまでどおりで基本変わらないとされています。
+          </li>
+          <li>
+            <strong>税金の負担：</strong>町議会議員や役場の職員の数は「市になること」を理由に増やすことはしないため、税負担は変わりません。
+          </li>
+          <li>
+            <strong>新たな住民負担：</strong>市になるために住民へ新しいお金の負担を求めることはありません。
+          </li>
+        </ul>
+
+        <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32854.pdf" target="_blank" rel="noopener" class="source-link">
+          🔗 出典：ご質問に対する回答（PDF・約1.0MB） ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- セクション3: かかるお金 ＆ 町が挙げている理由 -->
+    <section id="section-cost-reason">
+      <div class="section-header">
+        <span class="section-tag tag-info">お金と目的</span>
+        <h2 class="section-title">3. かかるお金と、町が目指す理由</h2>
+      </div>
+
+      <div class="card card-info">
+        <h3 class="card-title">💰 準備にかかるお金の見込み</h3>
+        <ul class="info-list">
+          <li>
+            全体で必要な経費の見込み：<strong class="stat-number">約2億1,150万円</strong>（211,506,000円）
+          </li>
+          <li>
+            一番大きな項目：役場のコンピュータシステム改修などに<strong class="stat-number">約1.1億円</strong>
+          </li>
+        </ul>
+
+        <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32854.pdf" target="_blank" rel="noopener" class="source-link">
+          🔗 出典：ご質問に対する回答（PDF・約1.0MB） ↗
+        </a>
+      </div>
+
+      <div class="card card-info">
+        <h3 class="card-title">🎯 町が市になりたい理由（町の公式説明）</h3>
+        <ul class="info-list">
+          <li><strong>まちの知名度・ブランド力アップ：</strong>「市」になることで全国的な名前の知られやすさを高める。</li>
+          <li><strong>情報発信力の向上：</strong>より多くの人に府中町の魅力をアピールしやすくする。</li>
+          <li><strong>企業の誘致（ゆうち）：</strong>新しい会社やお店を町に呼び込みやすくする。</li>
+          <li><strong>人口減少・少子高齢化への対応：</strong>将来のまちの働き手や暮らす人を維持していくため。</li>
+        </ul>
+
+        <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32411.pdf" target="_blank" rel="noopener" class="source-link">
+          🔗 出典：市制施行パンフレット（PDF・約1.9MB） ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- セクション4: まだ決まっていないこと（同等の大きさで扱う） -->
+    <section id="section-pending">
+      <div class="section-header">
+        <span class="section-tag tag-pending">未決定</span>
+        <h2 class="section-title">4. まだ決まっていないこと</h2>
+      </div>
+
+      <div class="card card-pending">
+        <ul class="info-list">
+          <li>
+            <strong>新しい「市の名前」：</strong><br>
+            全国にはすでに「府中市」が2つあります（東京都府中市、広島県府中市）。そのため、どのような市名になるかは <span class="badge-unknown">未定・検討中</span> です。
+          </li>
+          <li>
+            <strong>住所表記の変更手続き：</strong><br>
+            住民票や住所の書き換え手続きがどうなるかについて、町の回答は「決定しだい、改めてお知らせします」となっており、具体的な手順は <span class="badge-unknown">未定</span> です。
+          </li>
+        </ul>
+
+        <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32854.pdf" target="_blank" rel="noopener" class="source-link">
+          🔗 出典：ご質問に対する回答（PDF・約1.0MB） ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- セクション5: 住民から出ている声 -->
+    <section id="section-voice">
+      <div class="section-header">
+        <span class="section-tag tag-voice">住民の声</span>
+        <h2 class="section-title">5. 住民から出ている主な意見</h2>
+      </div>
+
+      <div class="card card-voice">
+        <p class="card-note">
+          住民説明会の記録やニュース報道（RCC・TSS等）によると、以下のような慎重・反対の意見が出されています。
+        </p>
+        <ul class="info-list">
+          <li>「いまの『町のまま』でよいのではないか」</li>
+          <li>「日本一人口が多い町（※府中町は日本一人口が多い町です）のままの方が個性があって良いのではないか」</li>
+        </ul>
+
+        <a href="https://www.town.fuchu.hiroshima.jp/site/jichiseido/56016.html" target="_blank" rel="noopener" class="source-link">
+          🔗 出典：住民説明会の実施 ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- セクション6: このサイトが載せていないこと -->
+    <section id="section-missing-info">
+      <div class="section-header">
+        <span class="section-tag tag-pending">未確認事項</span>
+        <h2 class="section-title">6. このサイトが載せていないこと</h2>
+      </div>
+
+      <div class="card card-pending">
+        <p class="card-note">
+          中立な情報提供のため、確認できていないこと・調べきれていないこともそのまま公開しています。
+        </p>
+        <ul class="info-list">
+          <li>
+            <strong>賛成側の住民の声：</strong><br>
+            記録や報道から確認できたのは慎重・反対の意見のみです。賛成の意見が出たかどうかは <span class="badge-unknown">未確認</span> です。（※町が目指す理由は第3章に掲載しています）
+          </li>
+          <li>
+            <strong>全町民向けの説明会が別に開かれた可能性：</strong><br>
+            公開されている記録は町内会向け5回のみですが、全町民向けの説明会が別途開かれたかどうかは <span class="badge-unknown">未確認</span> です。
+          </li>
+          <li>
+            <strong>アンケートの具体的な実施時期：</strong><br>
+            「今年度中」とだけ記載されており、具体的に何月何日に届くかは <span class="badge-unknown">不明</span> です。
+          </li>
+          <li>
+            <strong>住所表記の具体変更：</strong><br>
+            町名や番地の書き方が実際にどう変わるか詳細は <span class="badge-unknown">未決定</span> です。
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- セクション7: 公式出典一覧 -->
+    <section id="section-sources">
+      <div class="section-header">
+        <span class="section-tag tag-info">出典</span>
+        <h2 class="section-title">7. 情報の元データ（公式リンク）</h2>
+      </div>
+
+      <div class="sources-block">
+        <p class="card-note">
+          このサイトに書かれている内容は、すべて府中町が公開している以下の公式ページおよび報道に基づいています。
+        </p>
+        <ul class="sources-list">
+          <li>
+            <strong>府中町 自治制度トップページ</strong><br>
+            <a href="https://www.town.fuchu.hiroshima.jp/site/jichiseido/" target="_blank" rel="noopener">https://www.town.fuchu.hiroshima.jp/site/jichiseido/</a>
+          </li>
+          <li>
+            <strong>住民説明会の実施（資料・議事録）</strong><br>
+            <a href="https://www.town.fuchu.hiroshima.jp/site/jichiseido/56016.html" target="_blank" rel="noopener">https://www.town.fuchu.hiroshima.jp/site/jichiseido/56016.html</a>
+          </li>
+          <li>
+            <strong>説明資料「府中町 まちの未来に向けて」（PDF・約2.2MB）</strong><br>
+            <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32658.pdf" target="_blank" rel="noopener">https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32658.pdf</a>
+          </li>
+          <li>
+            <strong>市制施行パンフレット（PDF・約1.9MB）</strong><br>
+            <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32411.pdf" target="_blank" rel="noopener">https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32411.pdf</a>
+          </li>
+          <li>
+            <strong>ご質問に対する回答（PDF・約1.0MB）</strong><br>
+            <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32854.pdf" target="_blank" rel="noopener">https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32854.pdf</a>
+          </li>
+          <li>
+            <strong>市制施行にあたっての要件</strong><br>
+            <a href="https://www.town.fuchu.hiroshima.jp/site/jichiseido/53981.html" target="_blank" rel="noopener">https://www.town.fuchu.hiroshima.jp/site/jichiseido/53981.html</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- セクション8: 問い合わせ先 -->
+    <section id="section-contact">
+      <div class="contact-card">
+        <div class="contact-title">🤔 疑問や気になることがあったら</div>
+        <p class="contact-desc">
+          もっと詳しく知りたいことや直接質問したいことがあれば、町の公式窓口から問い合わせたり、電話で聞くことができます。
+        </p>
+
+        <div class="contact-buttons">
+          <a href="https://www.town.fuchu.hiroshima.jp/form/detail.php?sec_sec1=3&amp;lif_id=57051" target="_blank" rel="noopener" class="web-form-button">
+            💻 政策企画課へ問い合わせる（フォーム） ↗
+          </a>
+          <a href="tel:0822863121" class="phone-button">
+            📞 082-286-3121 に電話する
+          </a>
+        </div>
+
+        <div class="contact-detail">
+          府中町 総務企画部 政策企画課 企画調整係
+        </div>
+      </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+      <p>このページは府中町に住む高校生が町の公開資料をもとに作成した中立な情報整理ガイドです。</p>
+      <p style="margin-top: 4px;">15歳以上の皆さんが自分自身の考えでアンケートに回答できるようサポートすることを目的としています。</p>
+      <p class="last-checked">出典の最終確認日：<time id="lastChecked" datetime="2026-09-02">2026-09-02</time></p>
+    </footer>
+
+  </div>
+
+  <!-- ページ先頭へ戻る -->
+  <button type="button" class="to-top" id="toTopBtn" aria-label="ページの先頭へ戻る">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+  </button>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var root = document.documentElement;
+      var STORAGE_KEY = 'fuchu-theme';
+      var mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+      var toggleBtn = document.getElementById('themeToggleBtn');
+      var toggleText = document.getElementById('themeToggleText');
+      var toggleIcon = document.getElementById('themeToggleIcon');
+      var themeMeta = document.getElementById('themeColorMeta');
+      var progressBar = document.getElementById('progressBar');
+      var toTopBtn = document.getElementById('toTopBtn');
+
+      /* ---------- テーマ切替 ---------- */
+
+      function readStored() {
+        try {
+          var v = localStorage.getItem(STORAGE_KEY);
+          return (v === 'dark' || v === 'light') ? v : null;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      // 実際に表示されているテーマ（保存値がなければOS設定に従う）
+      function currentTheme() {
+        return readStored() || (mql.matches ? 'dark' : 'light');
+      }
+
+      function syncThemeUI() {
+        var isDark = currentTheme() === 'dark';
+
+        if (themeMeta) {
+          themeMeta.setAttribute('content', isDark ? '#0b1220' : '#f6f8fb');
+        }
+        if (toggleText) {
+          toggleText.textContent = isDark ? 'ライト' : 'ダーク';
+        }
+        if (toggleIcon) {
+          toggleIcon.textContent = isDark ? '☀️' : '🌙';
+        }
+        if (toggleBtn) {
+          toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+          toggleBtn.setAttribute('aria-label', isDark ? 'ライトモードに切り替え' : 'ダークモードに切り替え');
+        }
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          var next = currentTheme() === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          try {
+            localStorage.setItem(STORAGE_KEY, next);
+          } catch (e) {}
+          syncThemeUI();
+        });
+      }
+
+      // OS側のダークモード設定が変わったとき（手動指定がない場合のみ追従）
+      function onSchemeChange() {
+        if (!readStored()) { syncThemeUI(); }
+      }
+      if (typeof mql.addEventListener === 'function') {
+        mql.addEventListener('change', onSchemeChange);
+      } else if (typeof mql.addListener === 'function') {
+        mql.addListener(onSchemeChange);
+      }
+
+      syncThemeUI();
+
+      /* ---------- 読了プログレス & 先頭へ戻るボタン ---------- */
+
+      var ticking = false;
+
+      function updateOnScroll() {
+        var doc = document.documentElement;
+        var scrollTop = window.pageYOffset || doc.scrollTop || 0;
+        var scrollable = (doc.scrollHeight - window.innerHeight);
+        var ratio = scrollable > 0 ? Math.min(Math.max(scrollTop / scrollable, 0), 1) : 0;
+
+        if (progressBar) {
+          progressBar.style.transform = 'scaleX(' + ratio + ')';
+        }
+        if (toTopBtn) {
+          if (scrollTop > 480) {
+            toTopBtn.classList.add('is-visible');
+          } else {
+            toTopBtn.classList.remove('is-visible');
+          }
+        }
+        ticking = false;
+      }
+
+      function requestUpdate() {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(updateOnScroll);
+        }
+      }
+
+      window.addEventListener('scroll', requestUpdate, { passive: true });
+      window.addEventListener('resize', requestUpdate, { passive: true });
+      updateOnScroll();
+
+      if (toTopBtn) {
+        toTopBtn.addEventListener('click', function () {
+          var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
