@@ -64,6 +64,13 @@
       "used_in": ["5. 住民から出ている主な意見", "7. 情報の元データ"]
     },
     {
+      "id": "news-home-11gatsu",
+      "label": "11月にアンケート実施予定・市名もあわせて聞く（HOME広島ホームテレビ・2026年6月13日）",
+      "url": "https://news.yahoo.co.jp/articles/15c686a808304321fddaf9b5203cc3abad87e545",
+      "type": "news",
+      "used_in": ["1. いま起きていること", "4. まだ決まっていないこと", "7. 情報の元データ"]
+    },
+    {
       "id": "news-tss-kojin",
       "label": "アンケート対象を「全世帯」から「個人単位」に変更（テレビ新広島・2026年8月28日）",
       "url": "https://news.yahoo.co.jp/articles/9197ea06a0184606e1e0ad6a68c5ad543b27ac8e",
