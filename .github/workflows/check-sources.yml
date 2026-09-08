@@ -8,7 +8,7 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
+  issues: write
 
 jobs:
   check:
@@ -22,7 +22,7 @@ jobs:
 
       - run: pip install pypdf
 
-      - name: 公式資料を取得して前回と比較する
+      - name: 公式資料と報道を確認する
         id: check
         run: |
           if python scripts/check_sources.py; then
@@ -31,45 +31,42 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # 変更があったときだけ、確認用のプルリクエストを作る。
-      # このPRが変えるのは snapshots/ と sources.lock.json だけで、
-      # ページ本文（index.html）には手を触れない。本文の修正は人が判断する。
-      - name: 確認用のプルリクエストを作る
+      # 変化があったときは、記録（snapshots と lock）だけを main に反映し、
+      # 内容を Issue で知らせる。ページ本文（index.html）には触れない。
+      # 何をどう直すかは、Issue を読んだ人が判断する。
+      - name: 記録を更新して Issue で知らせる
         if: steps.check.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)
-          BRANCH="sources-update/${TODAY}"
+
+          # 通知用に、確認前のレポートを退避しておく
+          cp update-report.md /tmp/report.md
+
+          # 記録を「確認済み」に進める（次回は差分だけが出るようにするため）
+          python scripts/check_sources.py --accept
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # 同じ日に既にPRがあるなら、そちらに上書きする
-          git checkout -B "$BRANCH"
-          python scripts/check_sources.py --accept
           git add snapshots sources.lock.json
 
           if git diff --cached --quiet; then
-            echo "コミットする差分がありませんでした。"
-            exit 0
-          fi
-
-          git commit -m "公式資料の変更を検知 (${TODAY})"
-          git push --force-with-lease origin "$BRANCH"
-
-          if gh pr view "$BRANCH" --json number >/dev/null 2>&1; then
-            gh pr comment "$BRANCH" --body-file update-report.md
-            echo "既存のPRにコメントしました。"
+            echo "記録に変化はありませんでした。"
           else
-            gh pr create \
-              --base main \
-              --head "$BRANCH" \
-              --title "📄 公式資料に変更を検知 (${TODAY})" \
-              --body-file update-report.md
+            git commit -m "公式資料・報道の変化を記録 (${TODAY})"
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
 
-      - name: 変更がなければ結果だけ残す
+          gh issue create \
+            --title "府中町の動きを検知しました (${TODAY})" \
+            --body-file /tmp/report.md \
+            --label "" || gh issue create \
+            --title "府中町の動きを検知しました (${TODAY})" \
+            --body-file /tmp/report.md
+
+      - name: 変化がなければ結果だけ残す
         if: steps.check.outputs.changed == 'false'
         run: cat update-report.md >> "$GITHUB_STEP_SUMMARY"
