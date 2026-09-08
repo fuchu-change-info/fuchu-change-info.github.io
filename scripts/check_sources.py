@@ -112,6 +112,39 @@ def fetch_sitemap_urls(
     return sorted(set(urls))
 
 
+def fetch_news_items(feed_url: str, user_agent: str) -> list[dict]:
+    """GoogleニュースのRSSから記事の見出し・媒体・日付・リンクを取り出す。
+
+    町の公式ページだけを見ていると、新聞やテレビが先に報じた事実
+    （アンケートの方式変更など）に気づけない。無料で読める媒体を
+    横断的に拾うためにRSSを使う。
+    """
+    body, _ = fetch(feed_url, user_agent)
+    root = ET.fromstring(body)
+    items = []
+    for it in root.iter("item"):
+        title = (it.findtext("title") or "").strip()
+        if not title:
+            continue
+        src_el = it.find("source")
+        source = (src_el.text or "").strip() if src_el is not None else ""
+        # Googleニュースの見出しは「本文 - 媒体名」の形なので媒体名を落とす
+        if source and title.endswith(" - " + source):
+            title = title[: -(len(source) + 3)].strip()
+        items.append({
+            "title": title,
+            "source": source,
+            "date": (it.findtext("pubDate") or "").strip(),
+            "link": (it.findtext("link") or "").strip(),
+        })
+    return items
+
+
+def news_key(item: dict) -> str:
+    """比較用のキー。リンクは毎回変わりうるので見出しと媒体名で見る。"""
+    return f"{item['date']} | {item['source']} | {item['title']}"
+
+
 def decode_html(body: bytes, content_type: str) -> str:
     encodings = []
     m = re.search(r"charset=([\w-]+)", content_type, re.I)
@@ -153,6 +186,31 @@ def pdf_to_text(body: bytes) -> str:
     return "\n".join(parts)
 
 
+def extract_article_meta(html: str) -> str:
+    """ニュース記事は見出しと概要だけを見る。
+
+    ページ全体のテキストを比べると、関連記事欄やランキング枠が入れ替わる
+    たびに『変化あり』になってしまい、本当に記事が書き換わったのか・
+    消えたのかが埋もれてしまう。
+    """
+    def meta(*patterns):
+        for pat in patterns:
+            m = re.search(pat, html, re.I | re.S)
+            if m:
+                return re.sub(r"\s+", " ", m.group(1)).strip()
+        return ""
+
+    title = meta(r"<title[^>]*>(.*?)</title>")
+    og_title = meta(r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']*)')
+    desc = meta(
+        r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']*)',
+        r'<meta[^>]+property=["\']og:description["\'][^>]+content=["\']([^"\']*)',
+    )
+
+    lines = [f"title: {title}", f"og:title: {og_title}", f"description: {desc}"]
+    return normalize('\n'.join(x for x in lines if x.split(": ", 1)[1]))
+
+
 def extract(source: dict, body: bytes, headers: dict[str, str]) -> str:
     if source["type"] == "pdf":
         text = pdf_to_text(body)
@@ -161,8 +219,13 @@ def extract(source: dict, body: bytes, headers: dict[str, str]) -> str:
             return f"[pypdf でテキスト抽出不可]\nsha256={hashlib.sha256(body).hexdigest()}\nbytes={len(body)}\n"
         return normalize(text)
 
+    html = decode_html(body, headers["content_type"])
+
+    if source["type"] == "news":
+        return extract_article_meta(html)
+
     parser = TextExtractor()
-    parser.feed(decode_html(body, headers["content_type"]))
+    parser.feed(html)
     return normalize(parser.text())
 
 
@@ -277,6 +340,52 @@ def main() -> int:
         if args.accept:
             snapshot_path.write_text(text, encoding="utf-8", newline="")
 
+    # ---- 報道監視（新聞・テレビの新しい記事が出ていないか）----
+    new_articles: list[dict] = []
+
+    for watch in config.get("news_watches", []):
+        wid = watch["id"]
+        print(f"[{wid}] {watch['label']}")
+
+        try:
+            items = fetch_news_items(watch["feed_url"], user_agent)
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ET.ParseError) as exc:
+            print(f"    取得失敗: {exc}")
+            failed.append({"source": {"label": watch["label"], "url": watch["feed_url"]}, "error": str(exc)})
+            if wid in lock:
+                new_lock[wid] = lock[wid]
+            continue
+
+        keys = sorted({news_key(i) for i in items})
+        snapshot_path = SNAPSHOT_DIR / f"{wid}.txt"
+        previous = (
+            set(snapshot_path.read_text(encoding="utf-8").splitlines())
+            if snapshot_path.exists() else None
+        )
+
+        new_lock[wid] = {
+            "feed_url": watch["feed_url"],
+            "label": watch["label"],
+            "sha256": hashlib.sha256("\n".join(keys).encode("utf-8")).hexdigest(),
+            "article_count": len(keys),
+            "checked_at": today,
+        }
+
+        if previous is None:
+            print(f"    初回取得（{len(keys)}件、比較対象なし）")
+            snapshot_path.write_text("\n".join(keys) + "\n", encoding="utf-8", newline="")
+            continue
+
+        added = [i for i in items if news_key(i) not in previous]
+        if not added:
+            print("    新着なし")
+            continue
+
+        print(f"    ★ 新しい報道 {len(added)} 件")
+        new_articles.append({"watch": watch, "items": added})
+        if args.accept:
+            snapshot_path.write_text("\n".join(keys) + "\n", encoding="utf-8", newline="")
+
     # ---- sitemap監視（新しいページが増えていないか）----
     new_pages: list[dict] = []
 
@@ -331,6 +440,26 @@ def main() -> int:
     # ---- レポート出力 ----
     report = [f"# 公式資料の更新チェック（{today}）", ""]
 
+    if new_articles:
+        report.append("## 📰 新しい報道が見つかりました")
+        report.append("")
+        report.append(
+            "新聞・テレビ各社の記事をGoogleニュース経由で確認したところ、"
+            "前回このページを更新したあとに出た記事がありました。"
+            "町の公式発表より先に報じられている事実が含まれている場合があります。"
+            "内容を読んで、このページに反映すべきか判断してください。"
+        )
+        report.append("")
+        for item in new_articles:
+            report.append(f"### {item['watch']['label']}")
+            report.append("")
+            for a in item["items"]:
+                media = f"{a['source']}" if a["source"] else "媒体不明"
+                report.append(f"- **{a['title']}**")
+                report.append(f"  - {media}｜{a['date']}")
+                report.append(f"  - {a['link']}")
+            report.append("")
+
     if new_pages:
         report.append("## 🆕 新しいページが見つかった可能性")
         report.append("")
@@ -375,7 +504,7 @@ def main() -> int:
             report.append(item["diff"])
             report.append("```")
             report.append("")
-    elif not new_pages:
+    elif not new_pages and not new_articles:
         report.append("公式資料に変更はありませんでした。")
         report.append("")
 
@@ -401,10 +530,11 @@ def main() -> int:
         print("\nスナップショットとロックを更新しました。")
         return 0
 
-    if changed or failed or new_pages:
+    if changed or failed or new_pages or new_articles:
         print(
-            f"\n変更 {len(changed)} 件 / 新規ページ {len(new_pages)} 件 / "
-            f"取得失敗 {len(failed)} 件。詳細は {REPORT_FILE.name} を参照。"
+            f"\n変更 {len(changed)} 件 / 新着報道 {len(new_articles)} 件 / "
+            f"新規ページ {len(new_pages)} 件 / 取得失敗 {len(failed)} 件。"
+            f"詳細は {REPORT_FILE.name} を参照。"
         )
         return 1
 
