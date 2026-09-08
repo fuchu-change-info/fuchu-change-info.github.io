@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" id="themeColorMeta" content="#f6f8fb">
+  <meta name="theme-color" id="themeColorMeta" content="#edf1f7">
   <title>府中コンパス｜府中町の「市制移行」について考える 10代のための判断材料</title>
   <meta name="description" content="広島県安芸郡府中町が目指す「町から市になること（市制移行）」について、10代の皆さんが自分で判断するための情報を中立にまとめたページ「府中コンパス」です。">
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='88'%3E%F0%9F%93%98%3C/text%3E%3C/svg%3E">
@@ -42,7 +42,7 @@
        1. デザイントークン（ライトモード）
        ================================================== */
     :root {
-      --bg-primary: #f6f8fb;
+      --bg-primary: #edf1f7;
       --bg-surface: #ffffff;
       --bg-card: #ffffff;
       --header-bg: rgba(255, 255, 255, 0.82);
@@ -68,36 +68,12 @@
       --disclaimer-accent: #d97706;
       --disclaimer-text: #92400e;
 
-      /* 1. 変わらないこと（安定・グリーン） */
-      --color-unchanged-bg: #f0fdf4;
-      --color-unchanged-border: #bbf7d0;
-      --color-unchanged-accent: #16a34a;
-      --color-unchanged-tag: #dcfce7;
-      --color-unchanged-tag-text: #15803d;
-
-      /* 2. かかるお金・町の理由（データ・ブルー） */
-      --color-info-bg: #f0f9ff;
-      --color-info-border: #bae6fd;
-      --color-info-accent: #0284c7;
-      --color-info-tag: #e0f2fe;
-      --color-info-tag-text: #075985;
-
-      /* 3. まだ決まっていないこと（パープル） */
-      --color-pending-bg: #faf5ff;
-      --color-pending-border: #e9d5ff;
-      --color-pending-accent: #9333ea;
-      --color-pending-tag: #f3e8ff;
-      --color-pending-tag-text: #7e22ce;
-
-      /* 4. 住民の声（ティール） */
-      --color-voice-bg: #f0fdfa;
-      --color-voice-border: #99f6e4;
-      --color-voice-accent: #0d9488;
-      --color-voice-tag: #ccfbf1;
-      --color-voice-tag-text: #0f766e;
-
-      /* 数字ハイライトの下地 */
-      --highlight: #cde9fb;
+      /* カード・チップはブルー1系統に統一。分類はアイコンとラベル文字で示す */
+      --card-tint: #ffffff;
+      --card-line: #dde5f0;
+      --chip-bg: #eaf2fd;
+      --chip-ink: #1d4ed8;
+      --chip-line: #c5dbf8;
 
       --radius-sm: 10px;
       --radius-md: 16px;
@@ -120,7 +96,7 @@
       :root:not([data-theme="light"]) {
         color-scheme: dark;
 
-        --bg-primary: #0b1220;
+        --bg-primary: #090e18;
         --bg-surface: #151f31;
         --bg-card: #151f31;
         --header-bg: rgba(11, 18, 32, 0.82);
@@ -146,31 +122,11 @@
         --disclaimer-accent: #fbbf24;
         --disclaimer-text: #fde3a7;
 
-        --color-unchanged-bg: rgba(22, 163, 74, .13);
-        --color-unchanged-border: #2c6a45;
-        --color-unchanged-accent: #4ade80;
-        --color-unchanged-tag: rgba(22, 163, 74, .22);
-        --color-unchanged-tag-text: #9df0b6;
-
-        --color-info-bg: rgba(2, 132, 199, .14);
-        --color-info-border: #2a5e83;
-        --color-info-accent: #56c1f5;
-        --color-info-tag: rgba(2, 132, 199, .24);
-        --color-info-tag-text: #a6ddfb;
-
-        --color-pending-bg: rgba(147, 51, 234, .14);
-        --color-pending-border: #5b3a86;
-        --color-pending-accent: #c99bfb;
-        --color-pending-tag: rgba(147, 51, 234, .24);
-        --color-pending-tag-text: #e4ccff;
-
-        --color-voice-bg: rgba(13, 148, 136, .14);
-        --color-voice-border: #2a6b66;
-        --color-voice-accent: #45d6c2;
-        --color-voice-tag: rgba(13, 148, 136, .24);
-        --color-voice-tag-text: #9ceee2;
-
-        --highlight: rgba(86, 193, 245, .28);
+        --card-tint: #161f2c;
+        --card-line: #2a3849;
+        --chip-bg: rgba(96, 165, 250, .16);
+        --chip-ink: #93c5fd;
+        --chip-line: #2f4d78;
 
         --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
         --shadow-md: 0 4px 12px rgba(0, 0, 0, .40);
@@ -182,7 +138,7 @@
     :root[data-theme="dark"] {
       color-scheme: dark;
 
-      --bg-primary: #0b1220;
+      --bg-primary: #090e18;
       --bg-surface: #151f31;
       --bg-card: #151f31;
       --header-bg: rgba(11, 18, 32, 0.82);
@@ -208,31 +164,11 @@
       --disclaimer-accent: #fbbf24;
       --disclaimer-text: #fde3a7;
 
-      --color-unchanged-bg: rgba(22, 163, 74, .13);
-      --color-unchanged-border: #2c6a45;
-      --color-unchanged-accent: #4ade80;
-      --color-unchanged-tag: rgba(22, 163, 74, .22);
-      --color-unchanged-tag-text: #9df0b6;
-
-      --color-info-bg: rgba(2, 132, 199, .14);
-      --color-info-border: #2a5e83;
-      --color-info-accent: #56c1f5;
-      --color-info-tag: rgba(2, 132, 199, .24);
-      --color-info-tag-text: #a6ddfb;
-
-      --color-pending-bg: rgba(147, 51, 234, .14);
-      --color-pending-border: #5b3a86;
-      --color-pending-accent: #c99bfb;
-      --color-pending-tag: rgba(147, 51, 234, .24);
-      --color-pending-tag-text: #e4ccff;
-
-      --color-voice-bg: rgba(13, 148, 136, .14);
-      --color-voice-border: #2a6b66;
-      --color-voice-accent: #45d6c2;
-      --color-voice-tag: rgba(13, 148, 136, .24);
-      --color-voice-tag-text: #9ceee2;
-
-      --highlight: rgba(86, 193, 245, .28);
+      --card-tint: #161f2c;
+      --card-line: #2a3849;
+      --chip-bg: rgba(96, 165, 250, .16);
+      --chip-ink: #93c5fd;
+      --chip-line: #2f4d78;
 
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
       --shadow-md: 0 4px 12px rgba(0, 0, 0, .40);
@@ -347,24 +283,6 @@
 
     .header-badge .icon { margin-top: 0; }
 
-    .progress-track {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -1px;
-      height: 3px;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 100%;
-      transform: scaleX(0);
-      transform-origin: 0 50%;
-      background: linear-gradient(90deg, var(--primary-accent), var(--color-voice-accent));
-    }
-
     /* テーマ切替ボタン（タップ領域を確保） */
     .theme-toggle-btn {
       display: inline-flex;
@@ -388,7 +306,6 @@
 
     .theme-toggle-btn:hover { border-color: var(--border-strong); }
     .theme-toggle-btn:active { transform: scale(.96); }
-    .theme-toggle-icon { font-size: 1rem; line-height: 1; }
 
     /* ==================================================
        5. ヒーロー & 宣言バナー
@@ -542,10 +459,10 @@
 
     .nav-arrow { flex: none; font-size: 0.9rem; color: var(--text-subtle); }
 
-    .nav-item.nav-unchanged { border-left-color: var(--color-unchanged-accent); }
-    .nav-item.nav-info { border-left-color: var(--color-info-accent); }
-    .nav-item.nav-pending { border-left-color: var(--color-pending-accent); }
-    .nav-item.nav-voice { border-left-color: var(--color-voice-accent); }
+    .nav-item.nav-unchanged,
+    .nav-item.nav-info,
+    .nav-item.nav-pending,
+    .nav-item.nav-voice { border-left-color: var(--primary-accent); }
 
     /* ==================================================
        7. セクション & カード
@@ -566,13 +483,30 @@
 
     .section-tag {
       flex: none;
-      margin-top: 3px;
-      font-size: 0.72rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 2px;
+      font-size: 0.74rem;
       font-weight: 700;
       letter-spacing: .02em;
-      padding: 3px 10px;
+      padding: 4px 11px 4px 8px;
       border-radius: var(--radius-pill);
-      line-height: 1.6;
+      line-height: 1.5;
+      background: var(--chip-bg);
+      color: var(--chip-ink);
+      border: 1px solid var(--chip-line);
+    }
+
+    .tag-icon {
+      width: 14px;
+      height: 14px;
+      flex: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
     }
 
     .section-title {
@@ -582,14 +516,13 @@
     }
 
     .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-left: 5px solid var(--border-strong);
+      background: var(--card-tint);
+      border: 1px solid var(--card-line);
       border-radius: var(--radius-md);
-      padding: clamp(16px, 4.5vw, 22px);
+      padding: clamp(17px, 4.5vw, 23px);
       margin-bottom: 14px;
       box-shadow: var(--shadow-sm);
-      --bullet: var(--text-subtle);
+      --bullet: var(--primary-accent);
     }
     .card:last-child { margin-bottom: 0; }
 
@@ -597,46 +530,12 @@
       font-size: 1.02rem;
       font-weight: 700;
       line-height: 1.5;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    .card-premise {
-      background: var(--bg-surface);
-      border-left-color: var(--primary-accent);
-      --bullet: var(--primary-accent);
-    }
-
-    .card-unchanged {
-      background: var(--color-unchanged-bg);
-      border-color: var(--color-unchanged-border);
-      border-left-color: var(--color-unchanged-accent);
-      --bullet: var(--color-unchanged-accent);
-    }
-    .tag-unchanged { background: var(--color-unchanged-tag); color: var(--color-unchanged-tag-text); }
-
-    .card-info {
-      background: var(--color-info-bg);
-      border-color: var(--color-info-border);
-      border-left-color: var(--color-info-accent);
-      --bullet: var(--color-info-accent);
-    }
-    .tag-info { background: var(--color-info-tag); color: var(--color-info-tag-text); }
-
-    .card-pending {
-      background: var(--color-pending-bg);
-      border-color: var(--color-pending-border);
-      border-left-color: var(--color-pending-accent);
-      --bullet: var(--color-pending-accent);
-    }
-    .tag-pending { background: var(--color-pending-tag); color: var(--color-pending-tag-text); }
-
-    .card-voice {
-      background: var(--color-voice-bg);
-      border-color: var(--color-voice-border);
-      border-left-color: var(--color-voice-accent);
-      --bullet: var(--color-voice-accent);
-    }
-    .tag-voice { background: var(--color-voice-tag); color: var(--color-voice-tag-text); }
+    /* 分類ごとの塗り分けは廃止。カードの見た目は共通で、
+       違いはセクションのアイコンとラベル文字が担う */
+    .card-premise { background: var(--bg-surface); }
 
     .card-note {
       font-size: 0.88rem;
@@ -669,20 +568,20 @@
 
     /* 数字ハイライト */
     .stat-number {
-      font-size: 1.22em;
+      font-size: 1.24em;
       font-weight: 800;
-      color: var(--text-main);
-      background: linear-gradient(transparent 62%, var(--highlight) 62%);
-      padding: 0 3px;
+      color: var(--primary-accent);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.01em;
       white-space: nowrap;
     }
 
     /* 未確認・未定バッジ */
     .badge-unknown {
       display: inline-block;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-strong);
-      color: var(--text-muted);
+      background: var(--chip-bg);
+      border: 1px dashed var(--chip-line);
+      color: var(--chip-ink);
       font-size: 0.75rem;
       font-weight: 700;
       line-height: 1.6;
@@ -823,6 +722,17 @@
     }
     .phone-button:hover { background: var(--bg-primary); }
 
+    .btn-icon {
+      width: 17px;
+      height: 17px;
+      flex: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
     .contact-detail { margin-top: 16px; font-size: 0.82rem; color: var(--text-subtle); line-height: 1.6; }
 
     /* フッター */
@@ -860,14 +770,14 @@
       right: max(16px, env(safe-area-inset-right));
       bottom: calc(16px + env(safe-area-inset-bottom));
       z-index: 90;
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: var(--bg-surface);
-      color: var(--text-main);
-      border: 1px solid var(--border-strong);
+      color: var(--primary-accent);
+      border: 1px solid var(--card-line);
       border-radius: 50%;
       box-shadow: var(--shadow-lg);
       cursor: pointer;
@@ -879,7 +789,7 @@
 
     .to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
     .to-top:active { transform: scale(.94); }
-    .to-top .icon { width: 22px; height: 22px; margin-top: 0; }
+    .to-top .icon { width: 20px; height: 20px; margin-top: 0; }
 
     /* ==================================================
        9. 画面サイズ・環境ごとの調整
@@ -943,7 +853,6 @@
         府中コンパス
       </span>
       <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-pressed="false" aria-label="ダークモードに切り替え">
-        <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">🌙</span>
         <span id="themeToggleText">ダーク</span>
       </button>
     </div>
@@ -958,7 +867,7 @@
     <div class="hero">
       <div class="meta-bar">
         <span>広島県安芸郡府中町</span>
-        <span class="read-time">⏱️ 読了目安 3分</span>
+        <span class="read-time">読了目安 3分</span>
       </div>
       <h1>府中町の「市制移行」<br>10代のための判断材料</h1>
       <p class="hero-lead">
@@ -1015,7 +924,7 @@
     <!-- セクション1: 基本の前提 -->
     <section id="section-premise">
       <div class="section-header">
-        <span class="section-tag tag-info">前提</span>
+        <span class="section-tag"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M12 11.2v5.4"/><circle cx="12" cy="7.7" r="1.05" fill="currentColor" stroke="none"/></svg>前提</span>
         <h2 class="section-title">1. いま起きていること</h2>
       </div>
 
@@ -1033,12 +942,12 @@
         </ul>
 
         <div class="glossary-box">
-          <div class="glossary-title">💡 言い換え解説</div>
+          <div class="glossary-title">言い換え解説</div>
           <strong>市制移行（しせいいこう）</strong>：町という区切りから「市」という区切りへ立場を変えること。
         </div>
 
         <a href="https://www.town.fuchu.hiroshima.jp/site/jichiseido/" target="_blank" rel="noopener" class="source-link">
-          🔗 出典：府中町 自治制度ページ ↗
+          出典：府中町 自治制度ページ ↗
         </a>
       </div>
     </section>
@@ -1046,7 +955,7 @@
     <!-- セクション2: 変わらないこと（町の公式回答） -->
     <section id="section-unchanged">
       <div class="section-header">
-        <span class="section-tag tag-unchanged">変わらない</span>
+        <span class="section-tag"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M8.2 12.3l2.7 2.7 5-5.4"/></svg>変わらない</span>
         <h2 class="section-title">2. 市になっても変わらないこと</h2>
       </div>
 
@@ -1064,7 +973,7 @@
         </ul>
 
         <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32854.pdf" target="_blank" rel="noopener" class="source-link">
-          🔗 出典：ご質問に対する回答（PDF・約1.0MB） ↗
+          出典：ご質問に対する回答（PDF・約1.0MB） ↗
         </a>
       </div>
     </section>
@@ -1072,12 +981,12 @@
     <!-- セクション3: かかるお金 ＆ 町が挙げている理由 -->
     <section id="section-cost-reason">
       <div class="section-header">
-        <span class="section-tag tag-info">お金と目的</span>
+        <span class="section-tag"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M9 8.6l3 4 3-4M9.4 13.4h5.2M9.4 15.9h5.2M12 12.6v4.4"/></svg>お金と目的</span>
         <h2 class="section-title">3. かかるお金と、町が目指す理由</h2>
       </div>
 
       <div class="card card-info">
-        <h3 class="card-title">💰 準備にかかるお金の見込み</h3>
+        <h3 class="card-title">準備にかかるお金の見込み</h3>
         <ul class="info-list">
           <li>
             全体で必要な経費の見込み：<strong class="stat-number">約2億1,150万円</strong>（211,506,000円）
@@ -1088,12 +997,12 @@
         </ul>
 
         <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32854.pdf" target="_blank" rel="noopener" class="source-link">
-          🔗 出典：ご質問に対する回答（PDF・約1.0MB） ↗
+          出典：ご質問に対する回答（PDF・約1.0MB） ↗
         </a>
       </div>
 
       <div class="card card-info">
-        <h3 class="card-title">🎯 町が市になりたい理由（町の公式説明）</h3>
+        <h3 class="card-title">町が市になりたい理由（町の公式説明）</h3>
         <ul class="info-list">
           <li><strong>まちの知名度・ブランド力アップ：</strong>「市」になることで全国的な名前の知られやすさを高める。</li>
           <li><strong>情報発信力の向上：</strong>より多くの人に府中町の魅力をアピールしやすくする。</li>
@@ -1102,7 +1011,7 @@
         </ul>
 
         <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32411.pdf" target="_blank" rel="noopener" class="source-link">
-          🔗 出典：市制施行パンフレット（PDF・約1.9MB） ↗
+          出典：市制施行パンフレット（PDF・約1.9MB） ↗
         </a>
       </div>
     </section>
@@ -1110,7 +1019,7 @@
     <!-- セクション4: まだ決まっていないこと（同等の大きさで扱う） -->
     <section id="section-pending">
       <div class="section-header">
-        <span class="section-tag tag-pending">未決定</span>
+        <span class="section-tag"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M9.7 9.6a2.35 2.35 0 1 1 3 2.25c-.72.25-1.1.83-1.1 1.55v.35"/><circle cx="11.6" cy="16.6" r="1.05" fill="currentColor" stroke="none"/></svg>未決定</span>
         <h2 class="section-title">4. まだ決まっていないこと</h2>
       </div>
 
@@ -1127,7 +1036,7 @@
         </ul>
 
         <a href="https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32854.pdf" target="_blank" rel="noopener" class="source-link">
-          🔗 出典：ご質問に対する回答（PDF・約1.0MB） ↗
+          出典：ご質問に対する回答（PDF・約1.0MB） ↗
         </a>
       </div>
     </section>
@@ -1135,7 +1044,7 @@
     <!-- セクション5: 住民から出ている声 -->
     <section id="section-voice">
       <div class="section-header">
-        <span class="section-tag tag-voice">住民の声</span>
+        <span class="section-tag"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2a2 2 0 0 1-2 2H9.4L5.2 19.6v-3.4H6a2 2 0 0 1-2-2V6.6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/></svg>住民の声</span>
         <h2 class="section-title">5. 住民から出ている主な意見</h2>
       </div>
 
@@ -1150,13 +1059,13 @@
 
         <div class="source-link-group">
           <a href="https://www.town.fuchu.hiroshima.jp/site/jichiseido/56016.html" target="_blank" rel="noopener" class="source-link">
-            🔗 出典：住民説明会の実施（府中町公式） ↗
+            出典：住民説明会の実施（府中町公式） ↗
           </a>
           <a href="https://news.yahoo.co.jp/articles/b4508e4ceeb926f885bd3a15cabb17c2335aa959" target="_blank" rel="noopener" class="source-link">
-            🔗 出典：全町民対象の住民説明会で反対意見相次ぐ（RCC中国放送） ↗
+            出典：全町民対象の住民説明会で反対意見相次ぐ（RCC中国放送） ↗
           </a>
           <a href="https://www.chugoku-np.co.jp/articles/-/846723" target="_blank" rel="noopener" class="source-link">
-            🔗 出典：市制移行に懸念や要望（中国新聞デジタル） ↗
+            出典：市制移行に懸念や要望（中国新聞デジタル） ↗
           </a>
         </div>
       </div>
@@ -1165,7 +1074,7 @@
     <!-- セクション6: このサイトが載せていないこと -->
     <section id="section-missing-info">
       <div class="section-header">
-        <span class="section-tag tag-pending">未確認事項</span>
+        <span class="section-tag"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M9.7 9.6a2.35 2.35 0 1 1 3 2.25c-.72.25-1.1.83-1.1 1.55v.35"/><circle cx="11.6" cy="16.6" r="1.05" fill="currentColor" stroke="none"/></svg>未確認事項</span>
         <h2 class="section-title">6. このサイトが載せていないこと</h2>
       </div>
 
@@ -1197,7 +1106,7 @@
     <!-- セクション7: 公式出典一覧 -->
     <section id="section-sources">
       <div class="section-header">
-        <span class="section-tag tag-info">出典</span>
+        <span class="section-tag"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 3.8h7.2l4 4v12.4H6.4z"/><path d="M13.6 3.8v4h4M9.3 13h5.4M9.3 16.3h5.4"/></svg>出典</span>
         <h2 class="section-title">7. 情報の元データ（公式リンク）</h2>
       </div>
 
@@ -1245,17 +1154,17 @@
     <!-- セクション8: 問い合わせ先 -->
     <section id="section-contact">
       <div class="contact-card">
-        <div class="contact-title">🤔 疑問や気になることがあったら</div>
+        <div class="contact-title">疑問や気になることがあったら</div>
         <p class="contact-desc">
           もっと詳しく知りたいことや直接質問したいことがあれば、町の公式窓口から問い合わせたり、電話で聞くことができます。
         </p>
 
         <div class="contact-buttons">
           <a href="https://www.town.fuchu.hiroshima.jp/form/detail.php?sec_sec1=3&amp;lif_id=57051" target="_blank" rel="noopener" class="web-form-button">
-            💻 政策企画課へ問い合わせる（フォーム） ↗
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4.2H6.6v15.6h10.8V8.1z"/><path d="M13.5 4.2v3.9h3.9M9.2 12.4h5.6M9.2 15.4h5.6"/></svg>政策企画課へ問い合わせる（フォーム） ↗
           </a>
           <a href="tel:0822863121" class="phone-button">
-            📞 082-286-3121 に電話する
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 4.2h3.1l1.5 3.9-2 1.5a11.2 11.2 0 0 0 5.2 5.2l1.5-2 3.9 1.5v3.1a1.5 1.5 0 0 1-1.7 1.5A15.8 15.8 0 0 1 5.1 5.9a1.5 1.5 0 0 1 1.5-1.7z"/></svg>082-286-3121 に電話する
           </a>
         </div>
 
@@ -1289,7 +1198,6 @@
 
       var toggleBtn = document.getElementById('themeToggleBtn');
       var toggleText = document.getElementById('themeToggleText');
-      var toggleIcon = document.getElementById('themeToggleIcon');
       var themeMeta = document.getElementById('themeColorMeta');
       var progressBar = document.getElementById('progressBar');
       var toTopBtn = document.getElementById('toTopBtn');
@@ -1314,13 +1222,10 @@
         var isDark = currentTheme() === 'dark';
 
         if (themeMeta) {
-          themeMeta.setAttribute('content', isDark ? '#0b1220' : '#f6f8fb');
+          themeMeta.setAttribute('content', isDark ? '#090e18' : '#edf1f7');
         }
         if (toggleText) {
           toggleText.textContent = isDark ? 'ライト' : 'ダーク';
-        }
-        if (toggleIcon) {
-          toggleIcon.textContent = isDark ? '☀️' : '🌙';
         }
         if (toggleBtn) {
           toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
