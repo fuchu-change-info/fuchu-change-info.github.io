@@ -349,6 +349,18 @@ def main() -> int:
 
         try:
             items = fetch_news_items(watch["feed_url"], user_agent)
+            # 検索語だけでは観光記事などが混ざるので、見出しで絞る
+            must = watch.get("title_must_match")
+            if must:
+                items = [i for i in items if re.search(must, i["title"])]
+            # 同じ記事が別リンクで重複することがあるため、見出し＋媒体で一意にする
+            seen, uniq = set(), []
+            for i in items:
+                k = (i["title"], i["source"])
+                if k not in seen:
+                    seen.add(k)
+                    uniq.append(i)
+            items = uniq
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ET.ParseError) as exc:
             print(f"    取得失敗: {exc}")
             failed.append({"source": {"label": watch["label"], "url": watch["feed_url"]}, "error": str(exc)})
