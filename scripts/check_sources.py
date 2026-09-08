@@ -141,8 +141,15 @@ def fetch_news_items(feed_url: str, user_agent: str) -> list[dict]:
 
 
 def news_key(item: dict) -> str:
-    """比較用のキー。リンクは毎回変わりうるので見出しと媒体名で見る。"""
-    return f"{item['date']} | {item['source']} | {item['title']}"
+    """比較用のキーは見出しだけにする。
+
+    Googleニュースは配信元のIPによって、同じ記事でも日付や媒体名の
+    表記を変えて返す（例: "news.yahoo.co.jp" と "Yahoo!ニュース"）。
+    手元とGitHub Actionsでは実行場所が違うため、日付や媒体名を
+    キーに含めると、同じ記事が毎回「新着」に見えてしまう。
+    見出しは場所によって変わらないので、これだけで照合する。
+    """
+    return re.sub(r'\s+', ' ', item['title']).strip()
 
 
 def decode_html(body: bytes, content_type: str) -> str:
