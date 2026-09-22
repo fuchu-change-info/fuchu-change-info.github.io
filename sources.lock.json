@@ -3,24 +3,24 @@
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/",
     "label": "府中町 自治制度トップページ",
     "sha256": "ae9a701bc3dee7ef7d719258e56706f72558fe996f43b630d427a7578f793324",
-    "bytes": 27280,
-    "last_modified": "Tue, 22 Sep 2026 00:15:42 GMT",
+    "bytes": 27281,
+    "last_modified": "Tue, 22 Sep 2026 23:45:41 GMT",
     "checked_at": "2026-09-22"
   },
   "setsumeikai": {
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/56016.html",
     "label": "住民説明会の実施（資料・議事録）",
     "sha256": "d14880be141685afc38bb18f18a72811eb37b2a8659c5271c1d425cbbf8a5817",
-    "bytes": 31358,
-    "last_modified": "Tue, 22 Sep 2026 00:02:17 GMT",
+    "bytes": 31359,
+    "last_modified": "Tue, 22 Sep 2026 23:02:04 GMT",
     "checked_at": "2026-09-22"
   },
   "youken": {
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/53981.html",
     "label": "市制施行にあたっての要件",
     "sha256": "2caf1a79e77e80c2d45f44806513f2948978bf06ded6833db4848f00ec4d00df",
-    "bytes": 31044,
-    "last_modified": "Tue, 22 Sep 2026 00:02:09 GMT",
+    "bytes": 31043,
+    "last_modified": "Tue, 22 Sep 2026 23:01:56 GMT",
     "checked_at": "2026-09-22"
   },
   "pdf-mirai": {
@@ -51,7 +51,7 @@
     "url": "https://news.yahoo.co.jp/articles/b4508e4ceeb926f885bd3a15cabb17c2335aa959",
     "label": "全町民対象の住民説明会で反対意見相次ぐ（RCC中国放送・Yahoo!ニュース配信）",
     "sha256": "c9510c5aa9ce046b89d5f32d8da60b5b0e0d08ca67228efe865839fa2f6c5f79",
-    "bytes": 135972,
+    "bytes": 135143,
     "last_modified": "",
     "checked_at": "2026-09-22"
   },
@@ -59,7 +59,7 @@
     "url": "https://www.chugoku-np.co.jp/articles/-/846723",
     "label": "市制移行に懸念や要望　住民説明会スタート（中国新聞デジタル）",
     "sha256": "fdff53e5b5a674b6cc7516e66bbfa3a368daee764db766aae55a7769451f3fb5",
-    "bytes": 217407,
+    "bytes": 217762,
     "last_modified": "",
     "checked_at": "2026-09-22"
   },
@@ -67,7 +67,7 @@
     "url": "https://news.yahoo.co.jp/articles/15c686a808304321fddaf9b5203cc3abad87e545",
     "label": "11月にアンケート実施予定・市名もあわせて聞く（HOME広島ホームテレビ・2026年6月13日）",
     "sha256": "53167199e48c8b9fe8898f05a1208700b784cffec563717c4026f9d037367fa2",
-    "bytes": 117505,
+    "bytes": 117124,
     "last_modified": "",
     "checked_at": "2026-09-22"
   },
