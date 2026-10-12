@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import difflib
+import email.utils
 import hashlib
 import io
 import json
@@ -150,6 +151,23 @@ def news_key(item: dict) -> str:
     見出しは場所によって変わらないので、これだけで照合する。
     """
     return re.sub(r'\s+', ' ', item['title']).strip()
+
+
+def is_recent(item: dict, max_age_days: int) -> bool:
+    """配信日が max_age_days 日以内の記事だけを『新着』として扱う。
+
+    Googleニュースの検索結果は日によって顔ぶれが入れ替わり、何か月も前の
+    記事がふと現れることがある。それを毎回『新しい報道』として知らせると、
+    本当に新しい記事が埋もれてしまう。日付が読めない記事は念のため通す。
+    """
+    try:
+        published = email.utils.parsedate_to_datetime(item["date"])
+    except (TypeError, ValueError):
+        return True
+    if published.tzinfo is None:
+        published = published.replace(tzinfo=datetime.timezone.utc)
+    age = datetime.datetime.now(datetime.timezone.utc) - published
+    return age.days <= max_age_days
 
 
 def decode_html(body: bytes, content_type: str) -> str:
@@ -299,6 +317,21 @@ def main() -> int:
     failed: list[dict] = []
     new_lock: dict = {}
 
+    def note_failure(key: str, label: str, url: str, exc: Exception) -> None:
+        """取得失敗を記録する。同じ理由で失敗し続けている間は再報告しない。
+
+        リンク切れは直すまで毎日同じ結果になる。そのたびに知らせると
+        通知が埋まるので、初めて失敗した日（と理由が変わった日）だけ報告する。
+        """
+        message = str(exc)
+        previous = lock.get(key, {})
+        if previous.get("fetch_error") == message:
+            print(f"    取得失敗（報告済み）: {message}")
+        else:
+            print(f"    取得失敗: {message}")
+            failed.append({"source": {"label": label, "url": url}, "error": message})
+        new_lock[key] = {**previous, "fetch_error": message}
+
     for source in config["sources"]:
         sid, url = source["id"], source["url"]
         print(f"[{sid}] {url}")
@@ -306,11 +339,7 @@ def main() -> int:
         try:
             body, headers = fetch(url, user_agent)
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
-            print(f"    取得失敗: {exc}")
-            failed.append({"source": source, "error": str(exc)})
-            # 取得できなかったものは前回の記録をそのまま残す
-            if sid in lock:
-                new_lock[sid] = lock[sid]
+            note_failure(sid, source["label"], url, exc)
             continue
 
         text = extract(source, body, headers)
@@ -333,7 +362,9 @@ def main() -> int:
             snapshot_path.write_text(text, encoding="utf-8", newline="")
             continue
 
-        if previous == text:
+        # 空白や改行の位置だけの違いは変化とみなさない。PDFは抽出ライブラリの
+        # 版によって改行位置が変わり、中身が同じでも差分が出てしまうため。
+        if "".join(previous.split()) == "".join(text.split()):
             print("    変化なし")
             # 確認日だけ更新し、ロックの他の値は据え置く
             continue
@@ -360,6 +391,10 @@ def main() -> int:
             must = watch.get("title_must_match")
             if must:
                 items = [i for i in items if re.search(must, i["title"])]
+            # 「市制70周年」のような他の市の記事を外すため、町名を必須にできる
+            contain = watch.get("title_must_contain")
+            if contain:
+                items = [i for i in items if contain in i["title"]]
             # 同じ記事が別リンクで重複することがあるため、見出し＋媒体で一意にする
             seen, uniq = set(), []
             for i in items:
@@ -369,10 +404,7 @@ def main() -> int:
                     uniq.append(i)
             items = uniq
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ET.ParseError) as exc:
-            print(f"    取得失敗: {exc}")
-            failed.append({"source": {"label": watch["label"], "url": watch["feed_url"]}, "error": str(exc)})
-            if wid in lock:
-                new_lock[wid] = lock[wid]
+            note_failure(wid, watch["label"], watch["feed_url"], exc)
             continue
 
         keys = sorted({news_key(i) for i in items})
@@ -395,15 +427,23 @@ def main() -> int:
             snapshot_path.write_text("\n".join(keys) + "\n", encoding="utf-8", newline="")
             continue
 
-        added = [i for i in items if news_key(i) not in previous]
+        # 一度見た見出しは消さずに覚えておく。検索結果から一時的に外れた記事が
+        # 戻ってきたときに、また『新着』として数えないため。
+        known = sorted(previous | set(keys))
+        if args.accept and set(known) != previous:
+            snapshot_path.write_text("\n".join(known) + "\n", encoding="utf-8", newline="")
+
+        max_age = int(watch.get("max_age_days", 21))
+        added = [
+            i for i in items
+            if news_key(i) not in previous and is_recent(i, max_age)
+        ]
         if not added:
             print("    新着なし")
             continue
 
         print(f"    ★ 新しい報道 {len(added)} 件")
         new_articles.append({"watch": watch, "items": added})
-        if args.accept:
-            snapshot_path.write_text("\n".join(keys) + "\n", encoding="utf-8", newline="")
 
     # ---- sitemap監視（新しいページが増えていないか）----
     new_pages: list[dict] = []
@@ -418,10 +458,7 @@ def main() -> int:
                 watch.get("exclude_pattern"), user_agent,
             )
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ET.ParseError) as exc:
-            print(f"    取得失敗: {exc}")
-            failed.append({"source": {"label": watch["label"], "url": watch["sitemap_url"]}, "error": str(exc)})
-            if wid in lock:
-                new_lock[wid] = lock[wid]
+            note_failure(wid, watch["label"], watch["sitemap_url"], exc)
             continue
 
         snapshot_path = SNAPSHOT_DIR / f"{wid}.txt"
