@@ -3,25 +3,25 @@
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/",
     "label": "府中町 自治制度トップページ",
     "sha256": "f1af46a8d9c3ddc57949e634639208c2c9574e0c1286eb53af04198bfb081211",
-    "bytes": 27385,
-    "last_modified": "Fri, 30 Oct 2026 01:15:44 GMT",
-    "checked_at": "2026-10-30"
+    "bytes": 27384,
+    "last_modified": "Sat, 31 Oct 2026 01:02:32 GMT",
+    "checked_at": "2026-10-31"
   },
   "setsumeikai": {
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/56016.html",
     "label": "住民説明会の実施（資料・議事録）",
     "sha256": "f61f476ef827516a93f7ae59588a6b55da951795f52d56c389b73f7ffb10b900",
     "bytes": 31847,
-    "last_modified": "Fri, 30 Oct 2026 01:02:18 GMT",
-    "checked_at": "2026-10-30"
+    "last_modified": "Sat, 31 Oct 2026 01:02:19 GMT",
+    "checked_at": "2026-10-31"
   },
   "youken": {
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/53981.html",
     "label": "市制施行にあたっての要件",
     "sha256": "fea51b77b8170e6bb08e16029e0859bdc7f300b71a1580db97e8c0eaaaf72c50",
     "bytes": 31147,
-    "last_modified": "Fri, 30 Oct 2026 01:02:05 GMT",
-    "checked_at": "2026-10-30"
+    "last_modified": "Sat, 31 Oct 2026 01:02:06 GMT",
+    "checked_at": "2026-10-31"
   },
   "pdf-mirai": {
     "url": "https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32658.pdf",
@@ -29,7 +29,7 @@
     "sha256": "6d934bf9a58a6d61eaf633177fb0bb11de50378ba69a4fdce6127282023cbf63",
     "bytes": 2296442,
     "last_modified": "Thu, 23 Jul 2026 23:30:15 GMT",
-    "checked_at": "2026-10-30"
+    "checked_at": "2026-10-31"
   },
   "pdf-pamphlet": {
     "url": "https://www.town.fuchu.hiroshima.jp/uploaded/attachment/32411.pdf",
@@ -37,7 +37,7 @@
     "sha256": "68a95f1c57f7df93427ea30045ae7c8fce76ab06936011df23c1d6bba7dab85d",
     "bytes": 1966117,
     "last_modified": "Fri, 19 Jun 2026 01:15:16 GMT",
-    "checked_at": "2026-10-30"
+    "checked_at": "2026-10-31"
   },
   "pdf-qa": {
     "url": "https://www.town.fuchu.hiroshima.jp/uploaded/attachment/33101.pdf",
@@ -45,39 +45,39 @@
     "sha256": "258c2a0c4cd2948ac4bea99778f7073766ef8f7e61e175057fafa6526d7338e7",
     "bytes": 2166547,
     "last_modified": "Fri, 25 Sep 2026 00:15:17 GMT",
-    "checked_at": "2026-10-30"
+    "checked_at": "2026-10-31"
   },
   "news-rcc-yahoo": {
     "url": "https://news.yahoo.co.jp/articles/b4508e4ceeb926f885bd3a15cabb17c2335aa959",
     "label": "全町民対象の住民説明会で反対意見相次ぐ（RCC中国放送・Yahoo!ニュース配信）",
     "sha256": "b1057e90500ccfebdaaf37418064de96081400e4039fdcf5144e82ae60bbcc7d",
-    "bytes": 139514,
+    "bytes": 146044,
     "last_modified": "",
-    "checked_at": "2026-10-30"
+    "checked_at": "2026-10-31"
   },
   "news-chugoku-np": {
     "url": "https://www.chugoku-np.co.jp/articles/-/846723",
     "label": "市制移行に懸念や要望　住民説明会スタート（中国新聞デジタル）",
     "sha256": "fdff53e5b5a674b6cc7516e66bbfa3a368daee764db766aae55a7769451f3fb5",
-    "bytes": 211934,
+    "bytes": 214976,
     "last_modified": "",
-    "checked_at": "2026-10-30"
+    "checked_at": "2026-10-31"
   },
   "news-home-11gatsu": {
     "url": "https://news.yahoo.co.jp/articles/15c686a808304321fddaf9b5203cc3abad87e545",
     "label": "初の住民説明会で賛否の声・11月にアンケート予定（HOME広島ホームテレビ・2026年6月13日）",
     "sha256": "ff3560cdfdf5540e9fc171970b3817b55ed52c0d65cf34987485928912be01ac",
-    "bytes": 122524,
+    "bytes": 123160,
     "last_modified": "",
-    "checked_at": "2026-10-30"
+    "checked_at": "2026-10-31"
   },
   "news-cnp-kojin": {
     "url": "https://www.chugoku-np.co.jp/articles/-/886194",
     "label": "市制移行アンケートは個人単位で実施（中国新聞デジタル・2026年8月28日）",
     "sha256": "d421afdfd2a9df1638846b5107d52c38ad5b7b467b43c07fd5a30f76dce1bbac",
-    "bytes": 202841,
+    "bytes": 205883,
     "last_modified": "",
-    "checked_at": "2026-10-30"
+    "checked_at": "2026-10-31"
   },
   "pdf-zen-setsumeikai": {
     "url": "https://www.town.fuchu.hiroshima.jp/uploaded/attachment/33188.pdf",
@@ -85,7 +85,7 @@
     "sha256": "cebd48223b32da8859af7efa09292508e3ef20535d1b1c6ecd3b8e1aa66b844d",
     "bytes": 419598,
     "last_modified": "Wed, 07 Oct 2026 09:30:18 GMT",
-    "checked_at": "2026-10-30"
+    "checked_at": "2026-10-31"
   },
   "shingikai-3": {
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/57513.html",
@@ -100,29 +100,29 @@
     "url": "https://www.town.fuchu.hiroshima.jp/site/jichiseido/list650-1653.html",
     "label": "府中町単独自治調査研究審議会（一覧）",
     "sha256": "b6389995605c03d0859fc875ffe4195c3de0067623d126b1d85c1f27631b3a68",
-    "bytes": 24568,
-    "last_modified": "Fri, 30 Oct 2026 01:15:40 GMT",
-    "checked_at": "2026-10-30"
+    "bytes": 24567,
+    "last_modified": "Sat, 31 Oct 2026 01:01:17 GMT",
+    "checked_at": "2026-10-31"
   },
   "news-shisei": {
     "feed_url": "https://news.google.com/rss/search?q=%E5%BA%9C%E4%B8%AD%E7%94%BA+%E5%B8%82%E5%88%B6&hl=ja&gl=JP&ceid=JP:ja",
     "label": "「府中町 市制」の新着報道",
-    "sha256": "9b30efb77720eb93de0fcc9134918fcfe65122fa5154b7a566c544431edda5e1",
-    "article_count": 39,
-    "checked_at": "2026-10-30"
+    "sha256": "020861c90040b7b8804be0972860723c7ee20afb54274fa5f7a257ad368f9985",
+    "article_count": 40,
+    "checked_at": "2026-10-31"
   },
   "news-shimei": {
     "feed_url": "https://news.google.com/rss/search?q=%E5%BA%9C%E4%B8%AD%E7%94%BA+%E6%96%B0%E5%B8%82%E5%90%8D&hl=ja&gl=JP&ceid=JP:ja",
     "label": "「府中町 新市名」の新着報道",
-    "sha256": "f4b69ff022bb4f4b1cc14374f75b0a923176eda94da7f767735cfed8c0c48d31",
-    "article_count": 9,
-    "checked_at": "2026-10-30"
+    "sha256": "28c90281694cf62ff4c71521f00aea3eca6c9c0324e210fc040df5a8d15c6cf9",
+    "article_count": 7,
+    "checked_at": "2026-10-31"
   },
   "jichiseido-new-pages": {
     "sitemap_url": "https://www.town.fuchu.hiroshima.jp/sitemap01.xml",
     "label": "自治制度セクションの新規ページ",
-    "sha256": "0c33fefeb95b2c5123463b81cb40e6a20a170fd263192b7ecac523112ec38b32",
-    "url_count": 13,
-    "checked_at": "2026-10-30"
+    "sha256": "037d4e0715981a834256861863434aba6d9aa5f7e9de0acff13057fc9c1911b1",
+    "url_count": 14,
+    "checked_at": "2026-10-31"
   }
 }
